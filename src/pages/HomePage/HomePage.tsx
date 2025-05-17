@@ -7,7 +7,7 @@ import statusNext from '../../assets/status_next.svg';
 
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // fake data
 // import data from '../../mock_data/daily_plan.json';
@@ -87,8 +87,14 @@ console.log("DATA FROM SERVER: ", data)
 
 
     useEffect(() => {
-        const baseurl = '/api/v1/daily_plan/v3/?user_id=';
- //  const baseurl = "https://content.the.coach/api/v1/daily_plan/v3/?user_id=";
+     //   const baseurl = '/api/v1/daily_plan/v3/?user_id=';
+  // const baseurl = "https://content.the.coach/api/v1/daily_plan/v3/?user_id=";
+
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const homeUrl = import.meta.env.VITE_API_HOME_URL;
+  //const baseurlNew = "https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/";
+
+  // https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/
         
 // setUserId(getUserId());
 setIsLoading(true);
@@ -102,13 +108,10 @@ setIsLoading(true);
  console.log('Saved user id from user: ', userId);
     }
 
-axios.get(`${baseurl}${userId}`, {
+axios.get(`${baseUrl}${homeUrl}${user_id}`, {
     headers: {
       'Content-Type': 'application/json',
-       'Access-Control-Allow-Origin': '*',
-    //    'Access-Control-Allow-Methods': 'GET',
-        'User-Agent': 'android',
-        'AppVersion': '1.18.2',
+        'AppVersion': '1.12.1',
         'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
        
     }
@@ -189,9 +192,9 @@ theoryLessons.map((lesson: any, idx: number) => (
     <div className="flex-column bottomrightrounded toprightrounded content-between bg-[#F3F4F4] pl-3 pr-[16px] pt-[16px] pb-[16px] bottom_shadow">
         <div className="flex flex-row w-full justify-between items-center">
             <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
-              <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson.link_type.coach_lesson.lesson_id :  lesson.link_type.coach_video.lesson_id}` }>
+              {/* <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }> */}
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
-            </Link>
+            {/* </Link> */}
                 </div>
                 <div className="mttauto">
                     <p className="text-[10px] text-[#696E6C] uppercase font-bold sp_pro_text_medium_font wide">{lesson.description}</p>
@@ -224,9 +227,9 @@ practiceLessons.map((lesson: any, idx: number) => (
         <div className="flex flex-row w-full justify-between items-center">
             <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
 
-            <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson?.link_type.coach_lesson ? lesson?.link_type.coach_lesson?.lesson_id :  lesson.link_type.coach_video?.lesson_id}` }>
+            {/* <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson?.link_type.coach_lesson ? lesson?.link_type.coach_lesson?.lesson_id :  lesson.link_type.coach_video?.lesson_id}` }> */}
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
-            </Link>
+            {/* </Link> */}
             
                 </div>
                 <div className="mttauto">

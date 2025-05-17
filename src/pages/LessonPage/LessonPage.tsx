@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
-// import axios from 'axios';
- import thedata from '../../mock_data/lesson_data.json';
-// import useStore from '@/store/store';
+ import axios from 'axios';
+// import thedata from '../../mock_data/lesson_data.json';
+ import useStore from '../../store/store';
 import LessonHeader from '../../components/lesson/LessonHeader';
 // import { getLessonContent } from '@/utils/lesson_content';
 import PageContent from '../../components/lesson/PageContent';
 
-// import { useLocation } from 'react-router-dom';
+ import { useLocation } from 'react-router-dom';
 
 
 const LessonPage = () => {
 
-    const [isLoading] = useState(false);
+//    const [ setIsLoading] = useState(false);
    // const [data] = useState<any>(thedata);
    const [data, setData] = useState<any>({});
 
- //   const loc = useLocation();
+    const loc = useLocation();
 
 
-// const { totalPages, setTotalPages, currentPage, setCurrentPage } = useStore();
+ const {  setTotalPages, setCurrentPage, setLessonTitle, setLessonData } = useStore();
 // const { setLessonData, currentPage } = useStore();
 
 
@@ -52,54 +52,57 @@ TODO
 
 
 useEffect(() => {
-    setData(thedata);
+ //   setData(thedata);
  //   setDataToStore();
+   const baseUrl = import.meta.env.VITE_API_BASE_URL;
+   const lessonsUrl = import.meta.env.VITE_API_LESSONS_URL;
   //  const baseurl = "/api/v1/coachprogram/lessons/";
+  
 
 //    // https://content.the.coach/api/v1/coachprogram/lessons/body_scanning/
 
-//      if (loc != undefined) {
-//  let lesson_id = loc.search.split("=")[1];
-//   console.log("Inputted lesson id: ", lesson_id);
+     if (loc != undefined) {
+ let lesson_id = loc.search.split("=")[1];
+  console.log("Inputted lesson id: ", lesson_id);
 
-//   axios.get(`${baseurl}${lesson_id}`, {
-//     headers: {
-//         'Access-Control-Allow-Origin': '*',
-//       'Content-Type': 'application/json',
-//         'User-Agent': 'android',
-//         'AppVersion': '1.18.2',
-//         'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+  axios.get(`${baseUrl}${lessonsUrl}${lesson_id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+        'AppVersion': '1.12.1',
+        'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
        
-//     }
-// })
-// .then(response => {
-//     console.log('RESPONSE LESSON Data FROM SERVER:', response.data);
-//     setData(response.data);
-//   //  setHeadline(response.data?.plan[0]?.headline);
-//    // setLessons(response.data?.plan[0]?.questions);
+    }
+})
+.then(response => {
+    console.log('RESPONSE LESSON Data FROM SERVER:', response.data);
+    setData(response.data);
+  //  setHeadline(response.data?.plan[0]?.headline);
+   // setLessons(response.data?.plan[0]?.questions);
 
-//   //  setTheoryLessons(response.data?.plan[0]?.questions.filter((lesson: any) => lesson.section_id === 0 ));
+  //  setTheoryLessons(response.data?.plan[0]?.questions.filter((lesson: any) => lesson.section_id === 0 ));
 
-//     setIsLoading(false);
+   // setIsLoading(false);
 
-// })
-// .catch(error => {
-//     console.error('Error:', error);
-// });
-//      }
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+     }
 
-
-// setTotalPages(data.pages);
-// setLessonTitle(data.plate_name);
-//  setCurrentPage(1);
-//  setPageContentItems(new_lesson_content_arr);
+setLessonData(data);
+setTotalPages(data.pages);
+setLessonTitle(data.plate_name);
+ setCurrentPage(1);
+ // setPageContentItems(new_lesson_content_arr);
 
 }, [])
 
     return (
     <>
     {/* { isLoading === true ? */}
-   <><LessonHeader lesson_data={data}  /> <PageContent lesson_data={data} /></> 
+   <LessonHeader lesson_data={data}  /> 
+   <PageContent lesson_data={data} />
+   
    {/* : <h1>Data is loading...</h1>  } */}
     
     </>

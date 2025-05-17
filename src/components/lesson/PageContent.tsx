@@ -16,12 +16,13 @@ interface PageContentProps {
 
 const PageContent: React.FC<PageContentProps> = ({ lesson_data }) => {
 
-    const { currentPage, setCurrentPage } = useStore();
+    const { currentPage, setCurrentPage, lessonData } = useStore();
     const navigate = useNavigate();
 
+    console.log(lesson_data);
 // console.log("Whole lesson data from store: ", lessonData);
 
-const lessonData = lesson_data;
+// const lessonData = lesson_data;
 
 const freeText = lessonData.freetext_content ? lessonData.freetext_content : [];
 const image = lessonData.image_content ? lessonData.image_content : [];

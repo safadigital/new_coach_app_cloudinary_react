@@ -14,8 +14,9 @@ interface LessonHeaderProps {
 
 const LessonHeader: React.FC<LessonHeaderProps> = ({ lesson_data }) => {
 
-    const { currentPage, setCurrentPage } = useStore();
-    const lessonData = lesson_data;
+    const { currentPage, setCurrentPage, lessonData } = useStore();
+ //   const lessonData = lesson_data;
+ console.log(lesson_data);
 
     return (
         <>

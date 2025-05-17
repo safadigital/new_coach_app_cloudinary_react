@@ -12,6 +12,11 @@ export default defineConfig({
           target: 'https://content.the.coach',
           changeOrigin: true,
           secure: false,
+      },
+       '/lesson/api': {
+          target: 'https://content.the.coach',
+          changeOrigin: true,
+          secure: false,
       }
     }
   }
