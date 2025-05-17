@@ -65,7 +65,7 @@ useEffect(() => {
  let lesson_id = loc.search.split("=")[1];
   console.log("Inputted lesson id: ", lesson_id);
 
-  axios.get(`${baseUrl}${lessonsUrl}${lesson_id}`, {
+  axios.get(`${baseUrl}${lessonsUrl}${lesson_id}/`, {
     headers: {
       'Content-Type': 'application/json',
         'AppVersion': '1.12.1',
@@ -73,7 +73,7 @@ useEffect(() => {
        
     }
 })
-.then(response => {
+.then((response: any) => {
     console.log('RESPONSE LESSON Data FROM SERVER:', response.data);
     setData(response.data);
   //  setHeadline(response.data?.plan[0]?.headline);
@@ -82,6 +82,10 @@ useEffect(() => {
   //  setTheoryLessons(response.data?.plan[0]?.questions.filter((lesson: any) => lesson.section_id === 0 ));
 
    // setIsLoading(false);
+   setLessonData(response.data);
+setTotalPages(response.data.pages);
+setLessonTitle(response.data.plate_name);
+ setCurrentPage(1);
 
 })
 .catch(error => {
@@ -89,10 +93,10 @@ useEffect(() => {
 });
      }
 
-setLessonData(data);
-setTotalPages(data.pages);
-setLessonTitle(data.plate_name);
- setCurrentPage(1);
+// setLessonData(data);
+// setTotalPages(data.pages);
+// setLessonTitle(data.plate_name);
+//  setCurrentPage(1);
  // setPageContentItems(new_lesson_content_arr);
 
 }, [])

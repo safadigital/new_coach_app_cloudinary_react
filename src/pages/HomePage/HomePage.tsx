@@ -90,13 +90,18 @@ console.log("DATA FROM SERVER: ", data)
      //   const baseurl = '/api/v1/daily_plan/v3/?user_id=';
   // const baseurl = "https://content.the.coach/api/v1/daily_plan/v3/?user_id=";
 
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  let baseUrl = import.meta.env.VITE_API_BASE_URL;
   const homeUrl = import.meta.env.VITE_API_HOME_URL;
   //const baseurlNew = "https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/";
 
   // https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/
         
 // setUserId(getUserId());
+
+// if (import.meta.env.VITE_API_MODE == 'dev') {
+// baseUrl = '';
+// }
+
 setIsLoading(true);
 
  
