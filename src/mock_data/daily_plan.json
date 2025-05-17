@@ -1,0 +1,301 @@
+{
+   "can_show_push_popup" : true,
+   "date" : "2025-05-12",
+   "plan" : [
+      {
+         "add_more_button" : false,
+         "can_show_previous_day" : false,
+         "can_skip" : true,
+         "daily_sections" : [
+            {
+               "add_more_button" : true,
+               "id" : 0,
+               "order" : 0,
+               "title" : "Daily Lessons"
+            },
+            {
+               "add_more_button" : false,
+               "id" : 1,
+               "order" : 1,
+               "title" : "Daily Practice"
+            },
+            {
+               "add_more_button" : false,
+               "id" : 2,
+               "order" : 2,
+               "title" : "Other"
+            }
+         ],
+         "day_in_program" : 1,
+         "have_shown_next_day" : false,
+         "headline" : "Last longer",
+         "is_showing_extra_day" : false,
+         "name" : "last_longer",
+         "order" : 1,
+         "program_abtest_name" : "day_0",
+         "questions" : [
+            {
+               "actionable" : "theory",
+               "can_be_completed" : true,
+               "completed" : false,
+               "day_item_type" : "lesson",
+               "description" : "Lesson 1",
+               "duration" : "4 MIN",
+               "headline" : "Start Your Journey",
+               "info_icon" : null,
+               "link_text" : "Learn more",
+               "link_type" : {
+                  "coach_video" : {
+                     "content_id" : "pe_video1",
+                     "content_type" : "video",
+                     "lesson_id" : "intro_day_0_test_video",
+                     "program_id" : "last_longer",
+                     "video_url" : "https://heroku-cloudinary.nyc3.cdn.digitaloceanspaces.com/last_longer_in_bed_1-2_l8q1kn.mp4"
+                  }
+               },
+               "locked" : false,
+               "locked_text" : null,
+               "main_image" : "https://res.cloudinary.com/the-coach/image/upload/v1671802612/puqoevp354dw7tw6myd5.jpg",
+               "max_times_shown" : 1,
+               "must_be_completed" : true,
+               "name" : "lesson_introduction_pe",
+               "no_need_paywall" : false,
+               "optional" : false,
+               "order" : 1,
+               "program_days" : "1",
+               "section_id" : 0,
+               "show_feedback" : false,
+               "times_completed" : 0,
+               "total_completed" : 1
+            },
+            {
+               "actionable" : "theory",
+               "can_be_completed" : true,
+               "completed" : false,
+               "day_item_type" : "lesson",
+               "description" : "Lesson 2",
+               "duration" : "4 MIN",
+               "headline" : "Quick Wins?",
+               "info_icon" : null,
+               "link_text" : "Learn more",
+               "link_type" : {
+                  "coach_video" : {
+                     "content_id" : "pe_video3",
+                     "content_type" : "video",
+                     "lesson_id" : "quick_wins_pe_video",
+                     "program_id" : "last_longer",
+                     "video_url" : "https://heroku-cloudinary.nyc3.cdn.digitaloceanspaces.com/dqjcifwuovp8vkjizf9i.mp4"
+                  }
+               },
+               "locked" : false,
+               "locked_text" : null,
+               "main_image" : "https://res.cloudinary.com/the-coach/image/upload/v1682598985/Cam4_jpih14.jpg",
+               "max_times_shown" : 1,
+               "must_be_completed" : true,
+               "name" : "lesson_quick_wins",
+               "no_need_paywall" : false,
+               "optional" : false,
+               "order" : 2,
+               "program_days" : "1",
+               "section_id" : 0,
+               "show_feedback" : false,
+               "times_completed" : 0,
+               "total_completed" : 1
+            },
+            {
+               "actionable" : "theory",
+               "can_be_completed" : true,
+               "completed" : false,
+               "day_item_type" : "lesson",
+               "description" : "Daily essentials",
+               "duration" : null,
+               "headline" : "Magnesium: Mineral for Better Sex",
+               "info_icon" : null,
+               "link_text" : "Learn more",
+               "link_type" : {
+                  "coach_lesson" : {
+                     "feedback_id" : "feedback_2",
+                     "lesson_id" : "supplements_magnesium_pe",
+                     "program_id" : "last_longer",
+                     "rating_page" : {
+                        "Platform" : "iOS,Android",
+                        "freetext_content" : [
+                           {
+                              "Platform" : "iOS,Android",
+                              "content_id" : "feedback_2",
+                              "content_order" : 4,
+                              "content_type" : "free_text",
+                              "lesson_id" : "feedback_2",
+                              "page_id" : "feedback_2",
+                              "page_order" : 1,
+                              "question" : "How can we improve it?"
+                           },
+                           {
+                              "Platform" : "iOS",
+                              "content_id" : "email_feedback_2",
+                              "content_order" : 6,
+                              "content_type" : "free_text",
+                              "is_email" : true,
+                              "lesson_id" : "feedback_2",
+                              "page_id" : "feedback_2",
+                              "page_order" : 1,
+                              "question" : "default"
+                           }
+                        ],
+                        "image_content" : [],
+                        "is_complete" : false,
+                        "lesson_id" : "feedback_2",
+                        "module_id" : "feedback_2",
+                        "pages" : 1,
+                        "plate_description" : "none",
+                        "plate_id" : "feedback_2",
+                        "plate_length" : "none",
+                        "plate_name" : "Quiz",
+                        "plate_orange_text" : "none",
+                        "plate_order" : 1,
+                        "program_id" : "none",
+                        "progress" : 0,
+                        "quiz_content" : [],
+                        "rating_content" : [
+                           {
+                              "Platform" : "iOS,Android",
+                              "content_id" : "feedback_2",
+                              "content_order" : 2,
+                              "content_type" : "rating",
+                              "lesson_id" : "feedback_2",
+                              "page_id" : "feedback_2",
+                              "page_order" : 1,
+                              "text" : "How would you rate this lesson?"
+                           }
+                        ],
+                        "text_content" : [
+                           {
+                              "Platform" : "iOS,Android",
+                              "content_id" : "feedback_2",
+                              "content_order" : 1,
+                              "content_type" : "header",
+                              "lesson_id" : "feedback_2",
+                              "page_id" : "feedback_2",
+                              "page_order" : 1,
+                              "text" : "How would you rate the lesson?"
+                           },
+                           {
+                              "Platform" : "iOS,Android",
+                              "content_id" : "feedback_2",
+                              "content_order" : 3,
+                              "content_type" : "header",
+                              "lesson_id" : "feedback_2",
+                              "page_id" : "feedback_2",
+                              "page_order" : 1,
+                              "text" : "How can we improve it?"
+                           }
+                        ],
+                        "video_content" : []
+                     }
+                  },
+                  "feedback_id" : "feedback_2",
+                  "lesson_id" : ""
+               },
+               "locked" : false,
+               "locked_text" : null,
+               "main_image" : "https://res.cloudinary.com/the-coach/image/upload/v1725302993/magnesium_pe.jpg",
+               "max_times_shown" : 1,
+               "must_be_completed" : true,
+               "name" : "lesson_supplements_magnesium_pe",
+               "no_need_paywall" : false,
+               "optional" : false,
+               "order" : 6,
+               "program_days" : "1",
+               "section_id" : 0,
+               "show_feedback" : true,
+               "times_completed" : 0,
+               "total_completed" : 1
+            },
+            {
+               "actionable" : "practice",
+               "can_be_completed" : true,
+               "completed" : false,
+               "day_item_type" : "exercise",
+               "description" : "Guide",
+               "duration" : "3 MIN",
+               "headline" : "Unlock Your Pelvic Floor",
+               "info_icon" : null,
+               "link_text" : "Learn more",
+               "link_type" : {
+                  "coach_lesson" : {
+                     "lesson_id" : "finding_pc_instruction",
+                     "program_id" : "last_longer"
+                  }
+               },
+               "locked" : false,
+               "locked_text" : null,
+               "main_image" : "https://res.cloudinary.com/the-coach/image/upload/v1706629043/Lessons%20and%20Exercises%20pics/Find_PF_ow682a.png",
+               "max_times_shown" : 1,
+               "must_be_completed" : true,
+               "name" : "exercise_find_pelvic_floor_slides_pe",
+               "no_need_paywall" : false,
+               "optional" : false,
+               "order" : 0,
+               "program_days" : "1",
+               "section_id" : 1,
+               "show_feedback" : false,
+               "times_completed" : 0,
+               "total_completed" : 1
+            },
+            {
+               "actionable" : "practice",
+               "can_be_completed" : true,
+               "completed" : false,
+               "day_item_type" : "exercise",
+               "description" : "Kick-off training",
+               "duration" : "3 MIN",
+               "headline" : "Your first Kegel Workout",
+               "info_icon" : null,
+               "link_text" : "Learn more",
+               "link_type" : {
+                  "kegel_workout" : {
+                     "workout_id" : "workout_1_pe"
+                  }
+               },
+               "locked" : false,
+               "locked_text" : null,
+               "main_image" : "https://res.cloudinary.com/the-coach/image/upload/v1712171189/first_kegel_gdpank.jpg",
+               "max_times_shown" : 1,
+               "must_be_completed" : true,
+               "name" : "exercise_first_new_kegel_pe",
+               "no_need_paywall" : false,
+               "optional" : false,
+               "order" : 2,
+               "program_days" : "1",
+               "section_id" : 1,
+               "show_feedback" : false,
+               "times_completed" : 0,
+               "total_completed" : 1
+            },
+            {
+               "actionable" : "practice",
+               "completed" : false,
+               "dark_frame_text" : "Practice",
+               "day_item_type" : "exercise",
+               "description" : "Fitness",
+               "headline" : "Glutes & Pelvic Floor",
+               "link_description" : "Fitness",
+               "link_text" : "PC workout",
+               "link_type" : {
+                  "workout" : "date=2025-05-12&name=custombridgeworkout+%26+triceps+%26+biceps+home+workout&type=Home%2C+dumbbells&biceps=2&shoulders=2&triceps=2"
+               },
+               "locked" : false,
+               "main_image" : "https://res.cloudinary.com/the-coach/image/upload/v1711019298/bridge_ogrmvc.jpg",
+               "must_be_completed" : true,
+               "name" : "exercise_workout",
+               "no_need_paywall" : false,
+               "section_id" : 1
+            }
+         ],
+         "section_id" : "last_longer",
+         "show_remaining_days" : true,
+         "total_days" : 60
+      }
+   ],
+   "progress" : 0
+}
