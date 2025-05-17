@@ -154,7 +154,7 @@ return (<>
         } else {
                return (
         <>
-         <header className="visible flex items-center justify-between pr-5 pl-5 pt-5 ml-5 mr-5">
+         <header className="visible flex items-center justify-between pr-5 pl-5 pt-5">
         <div className="flex-column gap-2">
             <h3 className="text-xl font-bold new_york_medium_font">{headline}</h3>
             <div className="">
