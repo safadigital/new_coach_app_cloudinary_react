@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.full {
+display: flex;
+flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+
+.buttons {
+  position: fixed;
+  bottom: 0;
+}
+
+
+
+
+
+
+/* for mobiles */
+@media(max-width: 560px) {
+
+    .desktop-navigation {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+}
+
+/* for desktop screens */
+@media(min-width: 561px) {
+.broad_desktop {
+padding-left: 25%;
+padding-right: 25%;
+}
+
+.desktop-navigation {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+}
+
+@media(min-width: 920px) {
+.broad_desktop {
+padding-left: 25%;
+padding-right: 25%;
+}
+
+.desktop-navigation {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+}
+@media(min-width: 1100px) {
+.broad_desktop {
+padding-left: 36%;
+padding-right: 36%;
+}
+
+.desktop-navigation {
+    width: 100%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+
+}
+
+.lesson-img {
+/* display: flex;
+margin-left: 10%;
+margin-right: 10%; */
+}
+
+/* progress bar global styles */
+progress[value] {
+  background-color: #2B3330;
+  --color: #FF6D03;
+  /* border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; */
+}
+
+/* Chrome */
+progress[value]::-webkit-progress-value {
+    background:#FF6D03;
+}
+
+/* Firefox */
+progress[value]::-moz-progress-bar {
+    background:#FF6D03;
+}
+
+.smallProgress progress[value] {
+  background-color: #E3DCD8;
+  --color: #FF6D03;
+  /* border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; */
+}
+
+
+/* Globar font styles */
+@font-face {
+    font-family: 'New York';
+    src: url('./assets/fonts/fonnts.com-New_York_Small_Regular.ttf') format('truetype'); 
+}  
+
+@font-face {
+    font-family: 'SP Pro Text';
+    src: url('./assets/fonts/SFProText-Regular.ttf') format('truetype'); 
+}  
+
+@font-face {
+    font-family: 'SP Pro Text Medium';
+    src: url('./assets/fonts/SFProText-Medium.ttf') format('truetype'); 
+}  
+
+@font-face {
+    font-family: 'New York Heavy';
+    src: url('./assets/onts/fonnts.com-New_York_Small_Heavy.ttf') format('truetype'); 
+}  
+
+@font-face {
+    font-family: 'New York Medium';
+    src: url('./assets/fonts/fonnts.com-New_York_Small_Medium.ttf') format('truetype'); 
+}  
+
+
+/* fonts */
+.new_york_font {
+    font-family: 'New York';
+}
+
+.new_york_heavy_font {
+    font-family: 'New York Heavy';
+}
+
+.new_york_medium_font {
+    font-family: 'New York Medium';
+}
+
+.sp_pro_text_font {
+    font-family: 'SP Pro Text';
+}
+
+.sp_pro_text_medium_font {
+    font-family: 'SP Pro Text Medium';
+}
+
+
+
+/* App styles */
+
+
+.wide {
+    line-height: 12px;
+    letter-spacing: 10%;
+}
+
+.bottom_shadow {
+    border-bottom: 1px solid #D2D4D3;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    /* grid-column-gap: auto; */
+
+    /* padding-left: 15px;
+    padding-right: 15px;
+    background-color: #F3F4F4; */
+}
+
+.mttauto {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  margin-top: 29px;
+}
+
+.topleftrounded {
+border-top-left-radius: 8px;
+}
+
+.toprightrounded {
+    border-top-right-radius: 8px;
+}
+
+
+.bottomleftrounded {
+    border-bottom-left-radius: 8px;
+    }
+    
+    .bottomrightrounded {
+        border-bottom-right-radius: 8px;
+    }
+
+.couseimage {
+    min-width: 71px;
+    min-height: 71px;
+}
+
+/* profile */
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* subscribe button */
+.subscribe {
+font-size: 12px;
+font-weight: bold;
+background-color: #2B3330;
+color: #F3F4F4;
+letter-spacing: 10%;
+line-height: 16px;
+text-transform: uppercase;
+padding: 8px 16px;
+border-radius: 4px;
+/* margin-top: 10px; */
+
+}
+
+
+/* page */
+
+.page_h1 {
+    font-size: 24px;
+    /* font-weight: bold; */
+    letter-spacing: -2%;
+}
+
+.left_green_border {
+    border-left: 4px solid #208357;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+
+
+/* VIdeo player */
+.my-video {
+    width: 100%;
+    max-height: 100vh;
+}
+
+
+.video-js .vjs-control-bar {
+  display: block;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3.0em;
+/* 
+  @include background-color-with-alpha($primary-background-color, $primary-background-transparency); */
+}
+
+.video-js .vjs-audio-button {
+    color: yellow;
+}
+
+
+.imgVideo {
+    display: block;
+    position: relative;
+}
+
+.playIcon {
+ display: block;
+width: 30%; /* это наверное уже у тебя в js будет вычисляться */
+position: absolute;
+top: 22%; left: 40%; 
+}
+
+.main-video {
+    display: block;
+    position: relative;
+}
