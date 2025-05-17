@@ -7,7 +7,7 @@ import statusNext from '../../assets/status_next.svg';
 
 import axios from 'axios';
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // fake data
 // import data from '../../mock_data/daily_plan.json';
@@ -154,8 +154,8 @@ return (<>
         } else {
                return (
         <>
-         <header className="visible sm:invisible lg:invisible flex items-center justify-between pr-5 pl-5 pt-5">
-        <div className="flex-column">
+         <header className="visible flex items-center justify-between pr-5 pl-5 pt-5 ml-5 mr-5">
+        <div className="flex-column gap-2">
             <h3 className="text-xl font-bold new_york_medium_font">{headline}</h3>
             <div className="">
                 <span className='smallProgress flex items-start pt-3'>
@@ -197,9 +197,9 @@ theoryLessons.map((lesson: any, idx: number) => (
     <div className="flex-column bottomrightrounded toprightrounded content-between bg-[#F3F4F4] pl-3 pr-[16px] pt-[16px] pb-[16px] bottom_shadow">
         <div className="flex flex-row w-full justify-between items-center">
             <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
-              {/* <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }> */}
+              <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
-            {/* </Link> */}
+            </Link>
                 </div>
                 <div className="mttauto">
                     <p className="text-[10px] text-[#696E6C] uppercase font-bold sp_pro_text_medium_font wide">{lesson.description}</p>
@@ -232,9 +232,9 @@ practiceLessons.map((lesson: any, idx: number) => (
         <div className="flex flex-row w-full justify-between items-center">
             <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
 
-            {/* <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson?.link_type.coach_lesson ? lesson?.link_type.coach_lesson?.lesson_id :  lesson.link_type.coach_video?.lesson_id}` }> */}
+            <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson?.link_type.coach_lesson ? lesson?.link_type.coach_lesson?.lesson_id :  lesson.link_type.coach_video?.lesson_id}` }>
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
-            {/* </Link> */}
+            </Link>
             
                 </div>
                 <div className="mttauto">

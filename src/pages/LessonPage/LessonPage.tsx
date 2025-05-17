@@ -62,7 +62,7 @@ useEffect(() => {
 //    // https://content.the.coach/api/v1/coachprogram/lessons/body_scanning/
 
      if (loc != undefined) {
- let lesson_id = loc.search.split("=")[1];
+ let lesson_id = loc.search.split("=")[1] ? loc.search.split("=")[1] : '';
   console.log("Inputted lesson id: ", lesson_id);
 
   axios.get(`${baseUrl}${lessonsUrl}${lesson_id}/`, {
