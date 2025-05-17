@@ -297,3 +297,10 @@ top: 22%; left: 40%;
     display: block;
     position: relative;
 }
+
+
+video[poster] {
+/* height:100%;
+width:100%; */
+object-fit: cover;
+}

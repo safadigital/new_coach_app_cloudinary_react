@@ -7,6 +7,7 @@
 // import 'cloudinary-video-player/cld-video-player.min.css';
 import { useEffect, useRef } from 'react';
 
+
 declare global {
     interface Window { cloudinary: any; }
 }
@@ -20,14 +21,25 @@ function App() {
   const cloudinaryRef: any = useRef({});
   const videoRef: any = useRef({});
 
+  // const playVideoHandle = () => {
+  //   videoRef.current.play();
+  // }
+
   useEffect(() => {
     if ( cloudinaryRef.current ) return;
 
     cloudinaryRef.current = window.cloudinary;
     cloudinaryRef.current.videoPlayer(videoRef.current, {
       cloud_name: 'demo',
+      // preview: 'https://res.cloudinary.com/the-coach/image/upload/v1681746201/expert_Natalie_faekxs.jpg',
       // src: "https://res.cloudinary.com/the-coach/video/upload/v1681652731/BREATHING_PRACTICE_hpdspx.mp4",
-    })
+    });
+
+//     setTimeout(() => {
+//         videoRef.current.play();
+// // playVideoHandle();
+//     }, 0)
+    
   }, []);
 
   // const [demoplayer, setDemoplayer] = useState({});
@@ -132,8 +144,8 @@ function App() {
     <>
    <div className='flex h-screen justify-center'>
  <video
- src="https://res.cloudinary.com/the-coach/video/upload/v1681652731/BREATHING_PRACTICE_hpdspx.mp4"
- 
+ src="https://res.cloudinary.com/the-coach/video/upload/f_auto,q_auto/v1683028169/Video%20for%20PE%20and%20ED%20programs/relational_causes_1_bx8n9z.mp4"
+  poster='https://res.cloudinary.com/the-coach/image/upload/v1681746201/expert_Natalie_faekxs.jpg'
  ref={videoRef} />
  
 
@@ -156,12 +168,30 @@ function App() {
   <div className=''>
 
   </div>
- <button
+
+ <svg 
+ // onClick={handlePause}
+   onClick={() => videoRef.current.play()}
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+</svg>
+
+&nbsp; &nbsp; &nbsp;
+
+<svg 
+  onClick={() => videoRef.current.pause()}
+// onClick={handlePlay}
+xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3 font-bold">
+  <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
+</svg>
+
+ {/* <button
         onClick={() => videoRef.current.play()}
         id="vid-play" className="ml-5 mr-5 pr-5 pl-5 cursor-pointer">Play</button>
         <button
+
         onClick={() => videoRef.current.pause()}
-        id="vid-pause" className="btn btn-default">Pause</button>
+        id="vid-pause" className="btn btn-default">Pause</button> */}
         {/* <button id="vid-stop" className="btn btn-default">Stop</button> */}
 </div>
        
