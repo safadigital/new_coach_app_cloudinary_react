@@ -11,10 +11,11 @@ import PageContent from '../../components/lesson/PageContent';
 
 const LessonPage = () => {
 
- //   const [isLoading, setIsLoading] = useState(false);
-    const [data] = useState<any>(thedata);
+    const [isLoading] = useState(false);
+   // const [data] = useState<any>(thedata);
+   const [data, setData] = useState<any>({});
 
-  //  const loc = useLocation();
+ //   const loc = useLocation();
 
 
 // const { totalPages, setTotalPages, currentPage, setCurrentPage } = useStore();
@@ -51,8 +52,9 @@ TODO
 
 
 useEffect(() => {
+    setData(thedata);
  //   setDataToStore();
-//    const baseurl = "/api//v1/coachprogram/lessons/";
+  //  const baseurl = "/api/v1/coachprogram/lessons/";
 
 //    // https://content.the.coach/api/v1/coachprogram/lessons/body_scanning/
 
@@ -96,8 +98,10 @@ useEffect(() => {
 
     return (
     <>
-    <LessonHeader lesson_data={data}  />
-    <PageContent lesson_data={data} />
+    {/* { isLoading === true ? */}
+   <><LessonHeader lesson_data={data}  /> <PageContent lesson_data={data} /></> 
+   {/* : <h1>Data is loading...</h1>  } */}
+    
     </>
        
        
