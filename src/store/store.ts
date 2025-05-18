@@ -26,6 +26,9 @@ interface IStore {
   isAudioMuted: boolean;
   setIsAudioMuted: (state: boolean) => void;
 
+  isVideoPlaybackFast: boolean;
+  setIsVideoPlaybackFast: (state: boolean) => void;
+
 }
 
 
@@ -38,9 +41,15 @@ const useStore = create<IStore>((set) => ({
   isPlayNavigationShown: false,
   isVideoPlaying: false,
   isAudioMuted: false,
+  isVideoPlaybackFast: false,
 
  
 
+
+    setIsVideoPlaybackFast: (state: boolean) =>
+    set(() => ({
+      isVideoPlaybackFast: state
+    })),
 
    setIsAudioMuted: (state: boolean) =>
     set(() => ({

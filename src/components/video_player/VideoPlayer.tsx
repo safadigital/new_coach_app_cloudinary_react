@@ -12,7 +12,7 @@ declare global {
 
 const VideoPlayer = () => {
 
-    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
@@ -49,8 +49,11 @@ const VideoPlayer = () => {
   poster={videoItem.preview_url}
  ref={videoRef} />
  
+  </div>
 
-<div className='fixed flex bottom-5 cursor-pointer bg-black text-[#fff]'>
+<div className='w-[100%] h-[100%] top-[0%] fixed flex justify-center bg-black opacity-70'>
+
+<div className='fixed flex bottom-5 cursor-pointer text-[#fff]'>
    <div
   onClick={() => {
      navigate(`/lesson?lesson_id=${lessonData.lesson_id}`);
@@ -70,12 +73,35 @@ const VideoPlayer = () => {
 <span>DUration: {videoRef.current.duration}</span>
 <span>Playback rate: {videoRef.current.playbackRate}</span> */}
 
+{
+    isVideoPlaybackFast === false ? (
+<span
+onClick={ () => {
+    setIsVideoPlaybackFast(true);
+    videoRef.current.playbackRate = 2;
+}}
+className='text-[#fff] mr-5 pt-5 justify-center items-center rounded-full cursor-pointer'>
+<span>2x</span>
+  </span>
+    ) : (
+        <span
+onClick={ () => {
+    setIsVideoPlaybackFast(false);
+    videoRef.current.playbackRate = 1;
+}}
+className='text-[#fff] mr-5 pt-5 justify-center items-center rounded-full cursor-pointer'>
+<span>1x</span>
+  </span>
+    )
+}
+
+
  <span onClick={() =>  videoRef.current.currentTime = videoRef.current.currentTime - 15} className={"cursor-pointer"}>
      
       <img src={BackwardIcon} alt="" />
      
         </span>
-
+<span>
 {
     isVideoPlaying === true ? (
 <svg 
@@ -97,6 +123,8 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
 </svg>
     )
 }
+
+</span>
 
  
 
@@ -141,8 +169,9 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
 }
  
 </div>
-       
+    
    </div>
+     
     </>
   )
 }
