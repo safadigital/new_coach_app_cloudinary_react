@@ -104,7 +104,7 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
 
 
 
- <span onClick={() =>   videoRef.current.currentTime = videoRef.current.currentTime - 15} className={"cursor-pointer"}>
+ <span onClick={() =>   videoRef.current.currentTime = videoRef.current.currentTime + 15} className={"cursor-pointer"}>
         {/* <ForwardIcon /> */}
       <img src={ForwardIcon} alt="" />
         {/* <ForwardIcon /> */}
