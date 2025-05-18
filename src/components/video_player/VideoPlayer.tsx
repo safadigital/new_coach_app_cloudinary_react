@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import useStore from "../../store/store";
 import { getLessonVideoItemById } from "../../utils/lesson_content";
 import { useEffect, useRef } from 'react';
@@ -12,6 +12,8 @@ const VideoPlayer = () => {
     const { lessonData } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
+
+    const navigate = useNavigate();
 
 
     const loc = useLocation();
@@ -46,11 +48,7 @@ const VideoPlayer = () => {
 <div className='fixed flex bottom-5 cursor-pointer bg-black text-[#fff]'>
    <div
   onClick={() => {
-    // setTracks([]);
-    // setTrackItemIds([]);
-    // setTrackItemsMap({});
-    // setActiveIds([]);
-    // navigate('/lesson');
+     navigate(`/lesson?lesson_id=${lessonData.lesson_id}`);
   }}
   className='visible top-[2%] fixed flex flex-start w-[40px] h-[40px] bg-[#141D19] items-center justify-center rounded-full cursor-pointer'>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-[#fff] font-bold">
