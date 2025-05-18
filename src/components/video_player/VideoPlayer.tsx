@@ -3,6 +3,9 @@ import useStore from "../../store/store";
 import { getLessonVideoItemById } from "../../utils/lesson_content";
 import { useEffect, useRef } from 'react';
 
+ import BackwardIcon from '../../assets/Backward.svg';
+import ForwardIcon from '../../assets/Forward.svg';
+
 declare global {
     interface Window { cloudinary: any; }
 }
@@ -21,7 +24,7 @@ const VideoPlayer = () => {
 
     const videoItem = getLessonVideoItemById(lessonData, video_id);
 
-    console.log("Video ITEM in Playe: ", videoItem)
+    // console.log("Video ITEM in Playe: ", videoItem)
 
      useEffect(() => {
     if ( cloudinaryRef.current ) return;
@@ -34,6 +37,8 @@ const VideoPlayer = () => {
 
     
   }, []);
+
+  console.log("VIDEO PLAYER DATA: ", videoRef.current);
 
     // return <h1>VideoPlayer. Video Item previw url: {videoItem.preview_url}</h1>
     return (
@@ -57,9 +62,19 @@ const VideoPlayer = () => {
   </div>
 
   {/* buttons */}
-  <div className=''>
+  {/* <div className=''>
 
-  </div>
+  </div> */}
+
+{/* <span>Current time: {videoRef.current.currentTime}</span>
+<span>DUration: {videoRef.current.duration}</span>
+<span>Playback rate: {videoRef.current.playbackRate}</span> */}
+
+ <span onClick={() =>  videoRef.current.currentTime(videoRef.current.currentTime() - 15)} className={"cursor-pointer"}>
+        {/* <ForwardIcon /> */}
+      <img src={BackwardIcon} alt="" />
+        {/* <ForwardIcon /> */}
+        </span>
 
  <svg 
  // onClick={handlePause}
@@ -77,14 +92,14 @@ xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class
   <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
 </svg>
 
- {/* <button
-        onClick={() => videoRef.current.play()}
-        id="vid-play" className="ml-5 mr-5 pr-5 pl-5 cursor-pointer">Play</button>
-        <button
 
-        onClick={() => videoRef.current.pause()}
-        id="vid-pause" className="btn btn-default">Pause</button> */}
-        {/* <button id="vid-stop" className="btn btn-default">Stop</button> */}
+ <span onClick={() =>  videoRef.current.currentTime(videoRef.current.currentTime() + 15)} className={"cursor-pointer"}>
+        {/* <ForwardIcon /> */}
+      <img src={ForwardIcon} alt="" />
+        {/* <ForwardIcon /> */}
+        </span>
+
+ 
 </div>
        
    </div>
