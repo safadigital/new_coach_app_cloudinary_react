@@ -70,10 +70,10 @@ const VideoPlayer = () => {
 <span>DUration: {videoRef.current.duration}</span>
 <span>Playback rate: {videoRef.current.playbackRate}</span> */}
 
- <span onClick={() =>  videoRef.current.currentTime(videoRef.current.currentTime() - 15)} className={"cursor-pointer"}>
-        {/* <ForwardIcon /> */}
+ <span onClick={() =>  videoRef.current.currentTime = videoRef.current.currentTime - 15} className={"cursor-pointer"}>
+     
       <img src={BackwardIcon} alt="" />
-        {/* <ForwardIcon /> */}
+     
         </span>
 
  <svg 
@@ -93,7 +93,7 @@ xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class
 </svg>
 
 
- <span onClick={() =>  videoRef.current.currentTime(videoRef.current.currentTime() + 15)} className={"cursor-pointer"}>
+ <span onClick={() =>   videoRef.current.currentTime = videoRef.current.currentTime - 15} className={"cursor-pointer"}>
         {/* <ForwardIcon /> */}
       <img src={ForwardIcon} alt="" />
         {/* <ForwardIcon /> */}
