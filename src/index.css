@@ -304,3 +304,9 @@ video[poster] {
 width:100%; */
 object-fit: cover;
 }
+
+.the_color {
+     opacity: .5;
+   background-color: black;
+  
+}

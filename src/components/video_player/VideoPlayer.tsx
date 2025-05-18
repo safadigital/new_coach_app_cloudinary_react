@@ -51,9 +51,9 @@ const VideoPlayer = () => {
  
   </div>
 
-<div className='w-[100%] h-[100%] top-[0%] fixed flex justify-center bg-black opacity-70'>
+<div className='w-[100%] h-[100%] top-[0%] fixed flex justify-center the_color'>
 
-<div className='fixed flex bottom-5 cursor-pointer text-[#fff]'>
+<div className='fixed flex bottom-5 cursor-pointer text-[#fff] '>
    <div
   onClick={() => {
      navigate(`/lesson?lesson_id=${lessonData.lesson_id}`);
@@ -80,8 +80,11 @@ onClick={ () => {
     setIsVideoPlaybackFast(true);
     videoRef.current.playbackRate = 2;
 }}
-className='text-[#fff] mr-5 pt-5 justify-center items-center rounded-full cursor-pointer'>
-<span>2x</span>
+className='text-[#fff] mr-3 flex justify-center items-center rounded-full cursor-pointer'>
+    <span>
+2x
+    </span>
+
   </span>
     ) : (
         <span
