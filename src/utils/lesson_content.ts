@@ -27,3 +27,14 @@ console.log(`SELECTED CONTENT FOR PAGE ${current_page}: `, combinedArray);
 
 return combinedArray;
 }
+
+
+export function getLessonVideoItemById(data: any, content_id: string) {
+
+    let new_video_arr = data.video_content ? data.video_content : [];
+
+    let videoItem = new_video_arr.filter((video: any) => video.content_id === content_id );
+
+    return videoItem[0];
+
+}
