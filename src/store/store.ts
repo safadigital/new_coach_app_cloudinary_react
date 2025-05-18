@@ -20,6 +20,9 @@ interface IStore {
   lessonData: any;
   setLessonData: (state: any) => void;
 
+  isVideoPlaying: boolean;
+  setIsVideoPlaying: (state: boolean) => void;
+
 }
 
 
@@ -32,11 +35,15 @@ const useStore = create<IStore>((set) => ({
   isPlayNavigationShown: false,
   isVideoPlaying: false,
   isAudioMuted: false,
+
  
 
 
 
-  
+   setIsVideoPlaying: (state: boolean) =>
+    set(() => ({
+      isVideoPlaying: state
+    })),
 
  setLessonData: (state: any) =>
     set(() => ({

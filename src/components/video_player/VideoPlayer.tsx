@@ -12,7 +12,7 @@ declare global {
 
 const VideoPlayer = () => {
 
-    const { lessonData } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
@@ -76,21 +76,32 @@ const VideoPlayer = () => {
      
         </span>
 
- <svg 
- // onClick={handlePause}
-   onClick={() => videoRef.current.play()}
-xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
-</svg>
-
-&nbsp; &nbsp; &nbsp;
-
+{
+    isVideoPlaying === true ? (
 <svg 
-  onClick={() => videoRef.current.pause()}
-// onClick={handlePlay}
+  onClick={() => {
+    setIsVideoPlaying(false);
+    videoRef.current.pause();
+   } }
 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3 font-bold">
   <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
 </svg>
+    ) : (
+<svg 
+   onClick={() => {
+    setIsVideoPlaying(true);
+    videoRef.current.play();
+   } }
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+</svg>
+    )
+}
+
+ 
+
+
+
 
 
  <span onClick={() =>   videoRef.current.currentTime = videoRef.current.currentTime - 15} className={"cursor-pointer"}>
