@@ -70,7 +70,7 @@ setCurrentTime(videoRef.current.currentTime);
 {
   isVideoNavShown && (
     <div className='overlay'>
-<div className='fixed flex bottom-5 cursor-pointer text-[#fff] ml-5 mr-5'>
+<div className='fixed flex bottom-5 cursor-pointer text-[#fff] ml-10 mr-10'>
    <div
   onClick={() => {
      navigate(`/lesson?lesson_id=${lessonData.lesson_id}`);
@@ -81,7 +81,7 @@ setCurrentTime(videoRef.current.currentTime);
 </svg>
   </div>
 
-<div className="bottom-[16%] w-[90%] fixed flex justify-between">
+<div className="bottom-[16%] w-[80%] fixed flex justify-between">
   <div>
  {  timeToString({ time:  currentTime})}
   </div>
@@ -92,8 +92,8 @@ setCurrentTime(videoRef.current.currentTime);
 
 </div>
 
-  <div className="bottom-[20%] w-[90%] fixed flex h-1">
-     <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="h-full w-full flex h-1 " />
+  <div className="bottom-[20%] w-[80%] fixed flex h-1">
+     <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="w-full flex h-1 " />
 
   </div>
 
