@@ -13,7 +13,7 @@ declare global {
 
 const VideoPlayer = () => {
 
-    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
@@ -26,6 +26,13 @@ const VideoPlayer = () => {
     const videoItem = getLessonVideoItemById(lessonData, video_id);
 
     // console.log("Video ITEM in Playe: ", videoItem)
+
+    const handleVideoNavShown = () => {
+      setIsVideoNavShown(true);
+      setTimeout(() => {
+        setIsVideoNavShown(false)
+      }, 2000)
+    }
 
      useEffect(() => {
     if ( cloudinaryRef.current ) return;
@@ -44,7 +51,9 @@ const VideoPlayer = () => {
     // return <h1>VideoPlayer. Video Item previw url: {videoItem.preview_url}</h1>
     return (
     <>
-   <div className='flex h-screen justify-center'>
+   <div
+   onClick={handleVideoNavShown}
+   className='flex h-screen justify-center'>
  <video
  src={videoItem.video_url}
   poster={videoItem.preview_url}
@@ -52,8 +61,9 @@ const VideoPlayer = () => {
  
   </div>
 
-<div className='overlay'>
-
+{
+  isVideoNavShown && (
+    <div className='overlay'>
 <div className='fixed flex bottom-5 cursor-pointer text-[#fff] ml-5 mr-5'>
    <div
   onClick={() => {
@@ -81,14 +91,6 @@ const VideoPlayer = () => {
 
   </div>
 
-  {/* buttons */}
-  {/* <div className=''>
-
-  </div> */}
-
-{/* <span>Current time: {videoRef.current.currentTime}</span>
-<span>DUration: {videoRef.current.duration}</span>
-<span>Playback rate: {videoRef.current.playbackRate}</span> */}
 
 {
     isVideoPlaybackFast === false ? (
@@ -191,6 +193,9 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
 </div>
     
    </div>
+  )
+}
+
      
     </>
   )

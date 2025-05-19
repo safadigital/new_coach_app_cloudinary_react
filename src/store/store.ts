@@ -29,6 +29,9 @@ interface IStore {
   isVideoPlaybackFast: boolean;
   setIsVideoPlaybackFast: (state: boolean) => void;
 
+  isVideoNavShown: boolean;
+  setIsVideoNavShown: (state: boolean) => void;
+
 }
 
 
@@ -42,9 +45,14 @@ const useStore = create<IStore>((set) => ({
   isVideoPlaying: false,
   isAudioMuted: false,
   isVideoPlaybackFast: false,
+  isVideoNavShown: false,
 
  
 
+   setIsVideoNavShown: (state: boolean) =>
+    set(() => ({
+      isVideoNavShown: state
+    })),
 
     setIsVideoPlaybackFast: (state: boolean) =>
     set(() => ({
