@@ -189,7 +189,8 @@ return (<>
 {
 
 theoryLessons.map((lesson: any, idx: number) => (
-  <div key={idx} className="visible columns pr-5 pl-5 pt-1 mt-2 mb-2 ">
+      <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
+  <div className="visible columns pr-5 pl-5 pt-1 mt-2 mb-2 ">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />
@@ -197,9 +198,9 @@ theoryLessons.map((lesson: any, idx: number) => (
     <div className="flex-column bottomrightrounded toprightrounded content-between bg-[#F3F4F4] pl-3 pr-[16px] pt-[16px] pb-[16px] bottom_shadow">
         <div className="flex flex-row w-full justify-between items-center">
             <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
-              <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
+              
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
-            </Link>
+          
                 </div>
                 <div className="mttauto">
                     <p className="text-[10px] text-[#696E6C] uppercase font-bold sp_pro_text_medium_font wide">{lesson.description}</p>
@@ -207,6 +208,7 @@ theoryLessons.map((lesson: any, idx: number) => (
                         </div>
     </div>
    </div>
+   </Link>
 ))
 
 }
@@ -223,7 +225,8 @@ theoryLessons.map((lesson: any, idx: number) => (
        {
 
 practiceLessons.map((lesson: any, idx: number) => (
-  <div key={idx} className="visible columns pr-5 pl-5 pt-1 mt-2 mb-2 ">
+     <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
+  <div className="visible columns pr-5 pl-5 pt-1 mt-2 mb-2 ">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />
@@ -232,9 +235,7 @@ practiceLessons.map((lesson: any, idx: number) => (
         <div className="flex flex-row w-full justify-between items-center">
             <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
 
-            <Link to={ lesson.completed ? "#" : `/lesson?lesson_id=${ lesson?.link_type.coach_lesson ? lesson?.link_type.coach_lesson?.lesson_id :  lesson.link_type.coach_video?.lesson_id}` }>
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
-            </Link>
             
                 </div>
                 <div className="mttauto">
@@ -243,6 +244,7 @@ practiceLessons.map((lesson: any, idx: number) => (
                         </div>
     </div>
    </div>
+   </Link>
 ))
 
 }
