@@ -133,6 +133,7 @@ setNewDailyPlanData(response.data);
 setCurrentDay(response.data?.plan[0]?.day_in_program);
     } else {
         setDailyPlanData(response.data);
+        setCurrentDay(response.data?.plan[0]?.day_in_program);
     }
     
     setHeadline(response.data?.plan[0]?.headline);
