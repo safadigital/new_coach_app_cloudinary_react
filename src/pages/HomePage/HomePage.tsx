@@ -54,30 +54,31 @@ const HomePage = () => {
 
     const [data, setData] = useState<any>({});
 
-     const { dailyPlanData, setDailyPlanData, newDailyPlanData, setNewDailyPlanData, currentDay, setCurrentDay } = useStore();
+     const { dailyPlanData, setDailyPlanData, setNewDailyPlanData, currentDay, setCurrentDay } = useStore();
  
     const [headline, setHeadline] = useState("");
   //  const [lessons, setLessons] = useState([]);
     const [theoryLessons, setTheoryLessons] = useState([]);
     const [practiceLessons, setPracticeLessons] = useState([]);
     const [totalDays, setTotalDays] = useState(0);
-    const [dayInProgram, setDayInProgram] = useState(0);
+    const [ daysInProgram, setDayInProgram] = useState(0);
     const [progress, setProgress] = useState(0);
 
 
    // console.log(data.plan[0]);
 
 console.log("DATA FROM SERVER: ", data)
+console.log(daysInProgram)
 
  const loc: any = useLocation();
 
 
- const handleDailyPlanData = (location: any, current_day_number: number) => {
-setIsLoading(true);
-     let baseUrl = import.meta.env.VITE_API_BASE_URL;
-     const homeUrl = import.meta.env.VITE_API_HOME_URL;
-     user_id = location.search.split("=")[1] ? location.search.split("=")[1] : localStorage.getItem("userId");
- }
+//  const handleDailyPlanData = (location: any, current_day_number: number) => {
+// setIsLoading(true);
+//      let baseUrl = import.meta.env.VITE_API_BASE_URL;
+//      const homeUrl = import.meta.env.VITE_API_HOME_URL;
+//      user_id = location.search.split("=")[1] ? location.search.split("=")[1] : localStorage.getItem("userId");
+//  }
   
 
 
@@ -143,7 +144,7 @@ setCurrentDay(response.data?.plan[0]?.day_in_program);
 
     setTotalDays(response.data?.plan[0]?.total_days);
     setDayInProgram(response.data?.plan[0]?.day_in_program);
-    setProgress(response.data?.progress);
+    setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
 
     setIsLoading(false);
 
@@ -157,6 +158,7 @@ setCurrentDay(response.data?.plan[0]?.day_in_program);
         
         if (isLoading === true) {
 return (<>
+
 <div className='w-full h-full flex items-center justify-center'>
 <h1>Loading</h1>
 </div>
@@ -164,6 +166,7 @@ return (<>
         } else {
                return (
         <>
+        <div className='main_container'>
          <header className="visible flex items-center justify-between pr-5 pl-5 pt-5">
         <div className="flex-column gap-2">
             <h3 className="text-xl font-bold new_york_medium_font">{headline}</h3>
@@ -183,9 +186,9 @@ return (<>
        
     </header>
 
-    <hr className="visible sm:invisible text-gray-200" />
+    <hr className="visible text-gray-200" />
 
-    <div className="visible sm:invisible flex items-center justify-between pr-5 pl-5 pt-3">
+    <div className="visible flex items-center justify-between pr-5 pl-5 pt-3">
         {
             currentDay > 1 && (
 <img
@@ -233,6 +236,7 @@ theoryLessons.map((lesson: any, idx: number) => (
     </div>
    </div>
    </Link>
+   
 ))
 
 }
@@ -273,7 +277,7 @@ practiceLessons.map((lesson: any, idx: number) => (
 
 }
 
-      
+      </div>
         </>
     )
         }
