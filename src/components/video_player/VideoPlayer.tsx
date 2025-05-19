@@ -53,18 +53,18 @@ const VideoPlayer = () => {
 
 <div className='overlay'>
 
-<div className='fixed flex bottom-5 cursor-pointer text-[#fff] '>
+<div className='fixed flex bottom-5 cursor-pointer text-[#fff] ml-5 mr-5'>
    <div
   onClick={() => {
      navigate(`/lesson?lesson_id=${lessonData.lesson_id}`);
   }}
-  className='visible top-[2%] ml-5 fixed flex flex-start w-[40px] h-[40px] bg-[#141D19] items-center justify-center rounded-full cursor-pointer'>
+  className='visible top-[2%] fixed flex flex-start w-[40px] h-[40px] bg-[#141D19] items-center justify-center rounded-full cursor-pointer'>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-[#fff] font-bold">
   <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
 </svg>
   </div>
 
-  <div className="bottom-[20%] w-[90%] mr-5 ml-5 fixed flex h-1">
+  <div className="bottom-[20%] w-[90%] fixed flex h-1">
      <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="h-full w-full flex h-1 " />
 
   </div>
