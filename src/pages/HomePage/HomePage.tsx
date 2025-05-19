@@ -52,9 +52,9 @@ const HomePage = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [data, setData] = useState<any>({});
+   // const [data, setData] = useState<any>({});
 
-     const { dailyPlanData, setDailyPlanData, setNewDailyPlanData, currentDay, setCurrentDay, progress, setProgress } = useStore();
+     const { dailyPlanData, setDailyPlanData, currentDay, setCurrentDay, progress, setProgress } = useStore();
  
     const [headline, setHeadline] = useState("");
   //  const [lessons, setLessons] = useState([]);
@@ -67,7 +67,7 @@ const HomePage = () => {
 
    // console.log(data.plan[0]);
 
-console.log("DATA FROM SERVER: ", data)
+// console.log("DATA FROM SERVER: ", data)
 console.log(daysInProgram)
 
  const loc: any = useLocation();
@@ -126,7 +126,7 @@ axios.get(`${baseUrl}${homeUrl}${user_id}${currentDayRequest}`, {
 })
 .then((response: any) => {
     console.log('DATA FROM SERVER FROM MAIN WINDOW:', response.data);
-    setData(response.data);
+   // setData(response.data);
   // setCurrentDay(response.data.plan[0].day_in_program);
     if (currentDayRequest == '') {
 setDailyPlanData(response.data);
