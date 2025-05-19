@@ -87,7 +87,7 @@ setCurrentTime(videoRef.current.currentTime);
   </div>
 
   <div>
-   {  timeToString({ time:  videoRef.current.duration})}
+   {  timeToString({ time:  videoRef.current.duration ? videoRef.current.duration : 0})}
   </div>
 
 </div>
@@ -104,6 +104,7 @@ setCurrentTime(videoRef.current.currentTime);
 onClick={ () => {
     setIsVideoPlaybackFast(true);
     videoRef.current.playbackRate = 2;
+    handleVideoNavShown();
 }}
 className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center items-center rounded-full cursor-pointer'>
     <span className="">
@@ -116,6 +117,7 @@ className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center 
 onClick={ () => {
     setIsVideoPlaybackFast(false);
     videoRef.current.playbackRate = 1;
+    handleVideoNavShown();
 }}
 className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center items-center rounded-full cursor-pointer'>
 <span>1x</span>
@@ -136,6 +138,7 @@ className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center 
   onClick={() => {
     setIsVideoPlaying(false);
     videoRef.current.pause();
+    handleVideoNavShown();
    } }
 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3 font-bold">
   <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clipRule="evenodd" />
@@ -145,6 +148,7 @@ xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class
    onClick={() => {
     setIsVideoPlaying(true);
     videoRef.current.play();
+    handleVideoNavShown();
    } }
 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-16 bg-[#fff] rounded-[50px] text-black p-3">
   <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
@@ -169,6 +173,7 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
         <span onClick={() => {
             setIsAudioMuted(true);
             videoRef.current.volume = 0;
+            handleVideoNavShown();
         }} className={"cursor-pointer flex items-center pl-8"}>
       
  
@@ -183,6 +188,7 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
 <span onClick={() => {
             setIsAudioMuted(false);
             videoRef.current.volume = 1;
+            handleVideoNavShown();
         }}  className={"cursor-pointer flex items-center pl-8"}>
           
         

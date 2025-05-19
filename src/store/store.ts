@@ -48,8 +48,8 @@ const useStore = create<IStore>((set) => ({
   isVideoPlaying: false,
   isAudioMuted: false,
   isVideoPlaybackFast: false,
-  isVideoNavShown: false,
-  currentTime: 9,
+  isVideoNavShown: true,
+  currentTime: 0,
 
  
 
