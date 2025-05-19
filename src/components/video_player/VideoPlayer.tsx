@@ -51,7 +51,7 @@ const VideoPlayer = () => {
  
   </div>
 
-<div className='w-[100%] h-[100%] top-[0%] fixed flex justify-center the_color'>
+<div className='overlay'>
 
 <div className='fixed flex bottom-5 cursor-pointer text-[#fff] '>
    <div
