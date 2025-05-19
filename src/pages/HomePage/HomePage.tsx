@@ -187,7 +187,7 @@ return (<>
 
     <div className="visible sm:invisible flex items-center justify-between pr-5 pl-5 pt-3">
         {
-            currentDay > dayInProgram && (
+            currentDay > 1 && (
 <img
 onClick={() => setCurrentDay(currentDay - 1)}
 className="cursor-pointer" src={leftArrov} alt="" />
