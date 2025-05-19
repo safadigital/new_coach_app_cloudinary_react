@@ -7,6 +7,10 @@ interface IStore {
 dailyPlanData: any;
 setDailyPlanData: (state: any) => void;
 
+// daily progress
+progress: number;
+setProgress: (state: number) => void;
+
 // new daily plan data
 newDailyPlanData: any;
 setNewDailyPlanData: (state: any) => void;
@@ -62,9 +66,15 @@ const useStore = create<IStore>((set) => ({
   isVideoPlaybackFast: false,
   isVideoNavShown: true,
   currentTime: 0,
-  currentDay: 0,
+  currentDay: 1,
+  progress: 0,
 
  
+setProgress: (state: number) =>
+    set(() => ({
+      progress: state
+    })),
+
 setCurrentDay: (state: number) =>
     set(() => ({
       currentDay: state

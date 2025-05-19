@@ -54,7 +54,7 @@ const HomePage = () => {
 
     const [data, setData] = useState<any>({});
 
-     const { dailyPlanData, setDailyPlanData, setNewDailyPlanData, currentDay, setCurrentDay } = useStore();
+     const { dailyPlanData, setDailyPlanData, setNewDailyPlanData, currentDay, setCurrentDay, progress, setProgress } = useStore();
  
     const [headline, setHeadline] = useState("");
   //  const [lessons, setLessons] = useState([]);
@@ -62,7 +62,7 @@ const HomePage = () => {
     const [practiceLessons, setPracticeLessons] = useState([]);
     const [totalDays, setTotalDays] = useState(0);
     const [ daysInProgram, setDayInProgram] = useState(0);
-    const [progress, setProgress] = useState(0);
+ //   const [progress, setProgress] = useState(0);
 
 
    // console.log(data.plan[0]);
@@ -127,13 +127,15 @@ axios.get(`${baseUrl}${homeUrl}${user_id}${currentDayRequest}`, {
 .then((response: any) => {
     console.log('DATA FROM SERVER FROM MAIN WINDOW:', response.data);
     setData(response.data);
-    setCurrentDay(response.data.plan[0].day_in_program);
-    if (!!currentDayRequest) {
-setNewDailyPlanData(response.data);
-setCurrentDay(response.data?.plan[0]?.day_in_program);
+  // setCurrentDay(response.data.plan[0].day_in_program);
+    if (currentDayRequest == '') {
+setDailyPlanData(response.data);
+setProgress(Math.ceil((1 / response.data?.plan[0]?.total_days) * 100));
+// setCurrentDay(response.data?.plan[0]?.day_in_program);
     } else {
         setDailyPlanData(response.data);
         setCurrentDay(response.data?.plan[0]?.day_in_program);
+        setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
     }
     
     setHeadline(response.data?.plan[0]?.headline);
@@ -145,7 +147,7 @@ setCurrentDay(response.data?.plan[0]?.day_in_program);
 
     setTotalDays(response.data?.plan[0]?.total_days);
     setDayInProgram(response.data?.plan[0]?.day_in_program);
-    setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
+    // setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
 
     setIsLoading(false);
 
