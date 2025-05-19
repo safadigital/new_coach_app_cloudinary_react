@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 
  import BackwardIcon from '../../assets/Backward.svg';
 import ForwardIcon from '../../assets/Forward.svg';
+import { timeToString } from "../../utils/time";
 
 declare global {
     interface Window { cloudinary: any; }
@@ -64,6 +65,17 @@ const VideoPlayer = () => {
 </svg>
   </div>
 
+<div className="bottom-[17%] w-[90%] fixed flex justify-between">
+  <div>
+ {  timeToString({ time:  videoRef.current.currentTime})}
+  </div>
+
+  <div>
+   {  timeToString({ time:  videoRef.current.duration})}
+  </div>
+
+</div>
+
   <div className="bottom-[20%] w-[90%] fixed flex h-1">
      <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="h-full w-full flex h-1 " />
 
@@ -97,7 +109,7 @@ onClick={ () => {
     setIsVideoPlaybackFast(false);
     videoRef.current.playbackRate = 1;
 }}
-className='text-[#fff] bg-black h-[5%] w-[5%] justify-center items-center rounded-full cursor-pointer'>
+className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center items-center rounded-full cursor-pointer'>
 <span>1x</span>
   </span>
     )
