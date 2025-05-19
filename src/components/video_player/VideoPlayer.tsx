@@ -75,7 +75,7 @@ const VideoPlayer = () => {
 </svg>
   </div>
 
-<div className="bottom-[17%] w-[90%] fixed flex justify-between">
+<div className="bottom-[16%] w-[90%] fixed flex justify-between">
   <div>
  {  timeToString({ time:  videoRef.current.currentTime})}
   </div>
