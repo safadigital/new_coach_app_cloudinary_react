@@ -4,6 +4,7 @@ import rightArrov from '../../assets/right_arrow.svg';
 
 import statusDone from '../../assets/status_done.svg';
 import statusNext from '../../assets/status_next.svg';
+import useStore from '../../store/store';
 
 import axios from 'axios';
 
@@ -18,6 +19,8 @@ import { useEffect, useState } from 'react';
 // const HomePage = (props: Props) => {
 
 const HomePage = () => {
+
+   
 
     const [userId, setUserId] = useState("ios_p1W7YHzv2DblPDIYNUWGuV8A5s02");
 
@@ -51,6 +54,8 @@ const HomePage = () => {
 
     const [data, setData] = useState<any>({});
 
+     const { dailyPlanData, setDailyPlanData, newDailyPlanData, setNewDailyPlanData, currentDay, setCurrentDay } = useStore();
+ 
     const [headline, setHeadline] = useState("");
   //  const [lessons, setLessons] = useState([]);
     const [theoryLessons, setTheoryLessons] = useState([]);
@@ -65,24 +70,14 @@ const HomePage = () => {
 console.log("DATA FROM SERVER: ", data)
 
  const loc: any = useLocation();
-// console.log(lessons)
-    // const headline = data?.plan[0]?.headline;
-    // const lessons = data?.plan[0]?.questions;
-    // const theory_lessons = lessons.filter((lesson: any) => lesson.section_id === 0 );
-    // const practice_lessons = lessons.filter((lesson: any) => lesson.section_id === 1 );
-    // const total_days = data?.plan[0]?.total_days;
-    // const day_in_program = data?.plan[0]?.day_in_program;
 
-    // const progress = data?.progress;
 
-    //  const headline = ""
-    // const lessons: any = [];
-    // const theory_lessons = lessons.filter((lesson: any) => lesson.section_id === 0 );
-    // const practice_lessons = lessons.filter((lesson: any) => lesson.section_id === 1 );
-    // const total_days = 20;
-    // const day_in_program = 2;
-
-    // const progress = 20;
+ const handleDailyPlanData = (location: any, current_day_number: number) => {
+setIsLoading(true);
+     let baseUrl = import.meta.env.VITE_API_BASE_URL;
+     const homeUrl = import.meta.env.VITE_API_HOME_URL;
+     user_id = location.search.split("=")[1] ? location.search.split("=")[1] : localStorage.getItem("userId");
+ }
   
 
 
@@ -92,6 +87,13 @@ console.log("DATA FROM SERVER: ", data)
 
   let baseUrl = import.meta.env.VITE_API_BASE_URL;
   const homeUrl = import.meta.env.VITE_API_HOME_URL;
+  let currentDayRequest = '';
+if (!!dailyPlanData.plan) {
+  currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `&date=${dailyPlanData.date}&last_longer=${currentDay}` : '';
+
+}
+ 
+
   //const baseurlNew = "https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/";
 
   // https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/
@@ -113,7 +115,7 @@ setIsLoading(true);
  console.log('Saved user id from user: ', userId);
     }
 
-axios.get(`${baseUrl}${homeUrl}${user_id}`, {
+axios.get(`${baseUrl}${homeUrl}${user_id}${currentDayRequest}`, {
     headers: {
       'Content-Type': 'application/json',
         'AppVersion': '1.12.1',
@@ -122,8 +124,16 @@ axios.get(`${baseUrl}${homeUrl}${user_id}`, {
     }
 })
 .then((response: any) => {
-  //  console.log('Data:', response.data);
+    console.log('DATA FROM SERVER FROM MAIN WINDOW:', response.data);
     setData(response.data);
+    setCurrentDay(response.data.plan[0].day_in_program);
+    if (!!currentDayRequest) {
+setNewDailyPlanData(response.data);
+setCurrentDay(response.data?.plan[0]?.day_in_program);
+    } else {
+        setDailyPlanData(response.data);
+    }
+    
     setHeadline(response.data?.plan[0]?.headline);
    // setLessons(response.data?.plan[0]?.questions);
 
@@ -141,7 +151,7 @@ axios.get(`${baseUrl}${homeUrl}${user_id}`, {
 .catch(error => {
     console.error('Error:', error);
 });
-    }, [])
+    }, [currentDay])
 
     { 
         
@@ -176,9 +186,23 @@ return (<>
     <hr className="visible sm:invisible text-gray-200" />
 
     <div className="visible sm:invisible flex items-center justify-between pr-5 pl-5 pt-3">
-<img className="cursor-pointer" src={leftArrov} alt="" />
-<p className="text-[#696E6C] text-xs font-bold new_york_medium_font">Day {dayInProgram} of {totalDays}</p>
-<img className="cursor-pointer" src={rightArrov} alt="" />
+        {
+            currentDay > dayInProgram && (
+<img
+onClick={() => setCurrentDay(currentDay - 1)}
+className="cursor-pointer" src={leftArrov} alt="" />
+            )
+        }
+
+<p className="text-[#696E6C] text-xs font-bold new_york_medium_font">Day {currentDay} of {totalDays}</p>
+{
+    currentDay < totalDays && (
+<img
+onClick={() => setCurrentDay(currentDay + 1)}
+className="cursor-pointer" src={rightArrov} alt="" />
+    )
+}
+
     </div>
 
     <div className="visible flex pr-5 pl-5 pt-5">

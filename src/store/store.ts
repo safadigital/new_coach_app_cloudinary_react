@@ -3,6 +3,16 @@ import { create } from "zustand";
 
 
 interface IStore {
+// daily plan data by default
+dailyPlanData: any;
+setDailyPlanData: (state: any) => void;
+
+// new daily plan data
+newDailyPlanData: any;
+setNewDailyPlanData: (state: any) => void;
+
+currentDay: number;
+setCurrentDay: (state: any) => void;
 
     // lesson data
   totalPages: number;
@@ -40,6 +50,8 @@ interface IStore {
 
 const useStore = create<IStore>((set) => ({
   lessonData: {},
+  dailyPlanData: {},
+  newDailyPlanData: {},
   totalPages: 0,
   currentPage: 1,
   lessonTitle: "",
@@ -50,8 +62,23 @@ const useStore = create<IStore>((set) => ({
   isVideoPlaybackFast: false,
   isVideoNavShown: true,
   currentTime: 0,
+  currentDay: 0,
 
  
+setCurrentDay: (state: number) =>
+    set(() => ({
+      currentDay: state
+    })),
+
+  setNewDailyPlanData: (state: any) =>
+    set(() => ({
+      newDailyPlanData: state
+    })),
+
+  setDailyPlanData: (state: number) =>
+    set(() => ({
+      dailyPlanData: state
+    })),
 
    setCurrentTime: (state: number) =>
     set(() => ({
