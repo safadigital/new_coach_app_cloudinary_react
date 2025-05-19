@@ -13,11 +13,13 @@ declare global {
 
 const VideoPlayer = () => {
 
-    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, currentTime, setCurrentTime } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
     const navigate = useNavigate();
+
+   
 
 
     const loc = useLocation();
@@ -45,6 +47,10 @@ const VideoPlayer = () => {
 
     
   }, []);
+
+   setInterval(() => {
+setCurrentTime(videoRef.current.currentTime);
+    }, 1000)
 
   console.log("VIDEO PLAYER DATA: ", videoRef.current);
 
@@ -77,7 +83,7 @@ const VideoPlayer = () => {
 
 <div className="bottom-[16%] w-[90%] fixed flex justify-between">
   <div>
- {  timeToString({ time:  videoRef.current.currentTime})}
+ {  timeToString({ time:  currentTime})}
   </div>
 
   <div>

@@ -31,6 +31,9 @@ interface IStore {
 
   isVideoNavShown: boolean;
   setIsVideoNavShown: (state: boolean) => void;
+  
+  currentTime: number;
+  setCurrentTime: (state: number) => void;
 
 }
 
@@ -46,8 +49,14 @@ const useStore = create<IStore>((set) => ({
   isAudioMuted: false,
   isVideoPlaybackFast: false,
   isVideoNavShown: false,
+  currentTime: 9,
 
  
+
+   setCurrentTime: (state: number) =>
+    set(() => ({
+      currentTime: state
+    })),
 
    setIsVideoNavShown: (state: boolean) =>
     set(() => ({
