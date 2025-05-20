@@ -7,13 +7,14 @@ import { useEffect, useRef } from 'react';
 import ForwardIcon from '../../assets/Forward.svg';
 import { timeToString } from "../../utils/time";
 
+
 declare global {
     interface Window { cloudinary: any; }
 }
 
 const VideoPlayer = () => {
 
-    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, currentTime, setCurrentTime } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, currentTime, setCurrentTime, currentDay } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
@@ -81,7 +82,16 @@ setCurrentTime(videoRef.current.currentTime);
 </svg>
   </div>
 
-<div className="bottom-[16%] w-[80%] fixed flex justify-between">
+
+  <div className='visible bottom-[30%] fixed flex text-[#FFF] font-bold text-[18px] new_york_medium_font'>
+    {videoItem.video_name}
+  </div>
+
+<div className='visible bottom-[25%] fixed flex h-1 text-[#B4B7B5] font-bold text-[16px] new_york_medium_font '>
+  Day {currentDay}
+</div>
+
+<div className="bottom-[16%] w-[80%] fixed flex justify-between text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] ">
   <div>
  {  timeToString({ time:  currentTime})}
   </div>
