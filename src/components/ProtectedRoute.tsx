@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Navigate, Route, type RoutesProps } from "react-router-dom";
 
 interface Props extends RoutesProps {

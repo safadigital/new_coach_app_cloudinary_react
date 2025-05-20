@@ -14,19 +14,20 @@ import { Link } from 'react-router-dom';
 // import data from '../../mock_data/daily_plan.json';
 import { useEffect, useState } from 'react';
  import { useLocation } from 'react-router-dom';
+//import { logout } from '../../utils/logout';
 //interface Props {}
 
 // const HomePage = (props: Props) => {
 
 const HomePage = () => {
 
-   
+ //  const navigate = useNavigate();
 
-    const [userId, setUserId] = useState("ios_p1W7YHzv2DblPDIYNUWGuV8A5s02");
+ //   const [userId, setUserId] = useState("ios_p1W7YHzv2DblPDIYNUWGuV8A5s02");
 
-    let user_id = "ios_p1W7YHzv2DblPDIYNUWGuV8A5s02";
+    // let user_id = "ios_p1W7YHzv2DblPDIYNUWGuV8A5s02";
   
-  
+  // let user_id = "";
 
    // console.log("QUERY FROM LOCATION: ", loc.search.split("=")[1]);
 
@@ -55,7 +56,8 @@ const HomePage = () => {
    // const [data, setData] = useState<any>({});
 
      const { dailyPlanData, setDailyPlanData, currentDay, setCurrentDay, progress, setProgress } = useStore();
- 
+
+     
     const [headline, setHeadline] = useState("");
   //  const [lessons, setLessons] = useState([]);
     const [theoryLessons, setTheoryLessons] = useState([]);
@@ -83,16 +85,40 @@ console.log(daysInProgram)
 
 
     useEffect(() => {
-     //   const baseurl = '/api/v1/daily_plan/v3/?user_id=';
-  // const baseurl = "https://content.the.coach/api/v1/daily_plan/v3/?user_id=";
+  
+        // полная строка
+        let full_url = '';
+        // хедеры
+        let dynamic_headers = {};
 
-  let baseUrl = import.meta.env.VITE_API_BASE_URL;
-  const homeUrl = import.meta.env.VITE_API_HOME_URL;
+        // делаем проверку если данные приходят из локальной строки параметром user_id
+        let user_id = loc.search.split("=")[1];
+        let auth_token = localStorage.getItem("uid");
+        if (user_id !== undefined) {
+            full_url = import.meta.env.VITE_API_BASE_URL + import.meta.env.VITE_API_HOME_URL + '?user_id=' + user_id;
+            dynamic_headers = {
+                 'Content-Type': 'application/json',
+                 'AppVersion': '1.12.1',
+                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+            }
+        } else {
+            full_url = import.meta.env.VITE_API_BASE_URL + import.meta.env.VITE_API_HOME_URL;
+            dynamic_headers = {
+                 'Content-Type': 'application/json',
+                 'AppVersion': '1.12.1',
+                  'Coach-Authorization': `${auth_token}`,
+            }
+        }
+ 
   let currentDayRequest = '';
 if (!!dailyPlanData.plan) {
   currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `&date=${dailyPlanData.date}&last_longer=${currentDay}` : '';
-
 }
+
+//   let baseUrl = import.meta.env.VITE_API_BASE_URL;
+//   const homeUrl = import.meta.env.VITE_API_HOME_URL;
+
+ 
  
 
   //const baseurlNew = "https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/coachprogram/lessons/lesson_pairing_technique/";
@@ -107,22 +133,48 @@ if (!!dailyPlanData.plan) {
 
 setIsLoading(true);
 
- 
-    if (loc != undefined) {
- user_id = loc.search.split("=")[1];
- console.log("Inputted user id: ", user_id);
- 
- setUserId(user_id);
- console.log('Saved user id from user: ', userId);
-    }
+//  let token = '';
+//  let the_headers = {};
 
-axios.get(`${baseUrl}${homeUrl}${user_id}${currentDayRequest}`, {
-    headers: {
-      'Content-Type': 'application/json',
-        'AppVersion': '1.12.1',
-        'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
-       
-    }
+//     if (loc != undefined) {
+//  user_id = loc.search.split("=")[1] ? '?user_id=' + loc.search.split("=")[1] : '';
+//  console.log("Inputted user id: ", user_id);
+//   token = localStorage.getItem("uid") ? localStorage.getItem("uid") : import.meta.env.VITE_API_TOKEN;
+
+//   if (user_id != '') {
+//  the_headers = {
+//      'Content-Type': 'application/json',
+//         'AppVersion': '1.12.1',
+//         'Authorization': `Token ${token}`,
+//   }
+//   } else {
+//  the_headers = {
+//      'Content-Type': 'application/json',
+//         'AppVersion': '1.12.1',
+//         'Coach-Authorization': `${token}`,
+//   }
+//   }
+ 
+//  setUserId(user_id);
+//  console.log('Saved user id from user: ', userId);
+//     }
+
+   
+
+    
+
+
+// https://coach-preprod-cf87bfd42b85.herokuapp.com//api/v1/daily_plan/v3/?user_id=ios_p1W7YHzv2DblPDIYNUWGuV8A5s02
+    
+
+axios.get(`${full_url}${currentDayRequest}`, {
+// axios.get('https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/daily_plan/v3/?user_id=ios_UbQiZWExZ1XdBo618lYNz7jf4NI4', {
+      headers: dynamic_headers
+//      headers: {
+//      'Content-Type': 'application/json',
+//         'AppVersion': '1.12.1',
+//         'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+//   }
 })
 .then((response: any) => {
     console.log('DATA FROM SERVER FROM MAIN WINDOW:', response.data);

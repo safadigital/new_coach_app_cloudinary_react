@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-          target: 'https://content.the.coach',
+          target: 'https://coach-preprod-cf87bfd42b85.herokuapp.com',
           changeOrigin: true,
           secure: false,
       },
