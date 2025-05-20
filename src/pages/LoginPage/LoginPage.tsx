@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 const LoginPage = () => {
 
@@ -24,7 +25,7 @@ const LoginPage = () => {
             ,
             {
             headers: {
-                'Authorization': '',
+                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
                  'Content-Type': 'application/json',
             }
         }).then((response: any) => {
@@ -34,6 +35,7 @@ const LoginPage = () => {
         }).catch(error => {
     console.error('Error for email sending handler: ', error);
     setError(error);
+      setIsLoading(false);
 });
 
     }
@@ -45,7 +47,7 @@ const codeHandler = (e: any) => {
         const base_token_url = import.meta.env.VITE_API_VERIFY_TOKEN_CODE_BASE_URL;
         axios.get(base_token_url + `?code=${code}&email=${email}`, {
              headers: {
-                'Authorization': '',
+                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
                 
             }
         }).then((response: any) => {
@@ -56,6 +58,7 @@ const codeHandler = (e: any) => {
         }).catch(error => {
     console.error('Error for code sending handler: ', error);
     setError(error);
+     setIsLoading(false);
 }); 
 }
 
@@ -75,7 +78,7 @@ const codeHandler = (e: any) => {
 
 {
     isEmailSent != true && (
-            <form
+            <form method="POST"
             onSubmit={emailHandler}
             className="w-100 h-100 flex flex-col gap-3 justify-center items-center">
                 <input
@@ -94,13 +97,13 @@ const codeHandler = (e: any) => {
 
 {
     isEmailSent === true && (
-            <form
+            <form method="GET"
             onSubmit={codeHandler}
             className="w-100 h-100 flex flex-col gap-3 justify-center items-center">
                 <input
                  onChange={(e: any) => setCode(e.target.value) }
                 className="border-blue-500 w-50 p-2" type="text" placeholder="12345" required />
-                <button disabled={code.length < 6} className="bg-blue-500 text-white w-50 p-2 cursor-pointer">Send the code</button>
+                <button disabled={code.length < 4} className="bg-blue-500 text-white w-50 p-2 cursor-pointer">Send the code</button>
                  {
                     !!error && (
                         <p className="text-red-600">Error occured!</p>
