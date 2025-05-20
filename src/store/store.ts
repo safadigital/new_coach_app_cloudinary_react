@@ -3,6 +3,11 @@ import { create } from "zustand";
 
 
 interface IStore {
+
+  // auth
+  isAuth: boolean;
+  setIsAuth: (state: boolean) => void;
+
 // daily plan data by default
 dailyPlanData: any;
 setDailyPlanData: (state: any) => void;
@@ -53,6 +58,7 @@ setCurrentDay: (state: any) => void;
 
 
 const useStore = create<IStore>((set) => ({
+  isAuth: false,
   lessonData: {},
   dailyPlanData: {},
   newDailyPlanData: {},
@@ -70,6 +76,12 @@ const useStore = create<IStore>((set) => ({
   progress: 0,
 
  
+
+  setIsAuth: (state: boolean) =>
+    set(() => ({
+      isAuth: state
+    })),
+
 setProgress: (state: number) =>
     set(() => ({
       progress: state

@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import useStore from "../../store/store";
+
+// interface Props {
+//     setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
+// }
 
 const LoginPage = () => {
 
     const navigate = useNavigate();
+
+    const { isAuth, setIsAuth } = useStore();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -13,6 +20,12 @@ const LoginPage = () => {
     const [error, setError] = useState<string>('');
 
     const [code, setCode] = useState<string>('');
+
+    useEffect(() => {
+        if (isAuth === true) {
+            navigate('/');
+        }
+    }, [isAuth])
 
 
     const emailHandler = (e: any) => {
@@ -54,6 +67,9 @@ const codeHandler = (e: any) => {
               console.log('RESPONSE FROM SERVER FROM CODE:', response);
               setEmail('');
               setCode('');
+              localStorage.setItem("uid", response.data.uid);
+              setIsAuth(true);
+            
               navigate('/');
         }).catch(error => {
     console.error('Error for code sending handler: ', error);
