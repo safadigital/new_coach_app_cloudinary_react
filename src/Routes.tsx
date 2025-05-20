@@ -5,6 +5,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 import LessonPage from "./pages/LessonPage/LessonPage";
 import VideoPlayer from "./components/video_player/VideoPlayer";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 export const router = createBrowserRouter([
   //  {
@@ -14,7 +15,8 @@ export const router = createBrowserRouter([
            { path: "/", element: <HomePage /> },
            { path: "/profile", element: <ProfilePage /> },
            { path: "/lesson", element: <LessonPage /> },
-            { path: "/player", element: <VideoPlayer /> }
+           { path: "/player", element: <VideoPlayer /> },
+           { path: "/login", element: <LoginPage /> }
      //   ]
   //  }
 ])
