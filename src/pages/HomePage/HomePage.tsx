@@ -130,12 +130,14 @@ axios.get(`${baseUrl}${homeUrl}${user_id}${currentDayRequest}`, {
   // setCurrentDay(response.data.plan[0].day_in_program);
     if (currentDayRequest == '') {
 setDailyPlanData(response.data);
+// setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
+//  setCurrentDay(response.data?.plan[0]?.day_in_program);
 setProgress(Math.ceil((1 / response.data?.plan[0]?.total_days) * 100));
-// setCurrentDay(response.data?.plan[0]?.day_in_program);
+ setCurrentDay(1);
     } else {
         setDailyPlanData(response.data);
-        setCurrentDay(response.data?.plan[0]?.day_in_program);
-        setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
+        setCurrentDay(currentDay);
+        setProgress(Math.ceil((currentDay / response.data?.plan[0]?.total_days) * 100));
     }
     
     setHeadline(response.data?.plan[0]?.headline);
@@ -192,23 +194,24 @@ return (<>
     <hr className="visible text-gray-200" />
 
     <div className="visible flex items-center justify-between pr-5 pl-5 pt-3">
-        {
-            currentDay > 1 && (
+     
 <img
-onClick={() => setCurrentDay(currentDay - 1)}
+onClick={() => {
+    if (  currentDay > 1) {
+        setCurrentDay(currentDay - 1);
+    }
+}}
 className="cursor-pointer" src={leftArrov} alt="" />
-            )
-        }
 
 <p className="text-[#696E6C] text-xs font-bold new_york_medium_font">Day {currentDay} of {totalDays}</p>
-{
-    currentDay < totalDays && (
-<img
-onClick={() => setCurrentDay(currentDay + 1)}
-className="cursor-pointer" src={rightArrov} alt="" />
-    )
-}
 
+<img
+onClick={() => {
+if ( currentDay < totalDays) {
+setCurrentDay(currentDay + 1);
+}
+} }
+className="cursor-pointer" src={rightArrov} alt="" />
     </div>
 
     <div className="visible flex pr-5 pl-5 pt-5">
