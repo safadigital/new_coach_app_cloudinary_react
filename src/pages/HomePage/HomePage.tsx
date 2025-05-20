@@ -94,6 +94,7 @@ console.log(daysInProgram)
         // делаем проверку если данные приходят из локальной строки параметром user_id
         let user_id = loc.search.split("=")[1];
         let auth_token = localStorage.getItem("uid");
+        console.log(" auth token from local storage: ", auth_token)
         if (user_id !== undefined) {
             full_url = import.meta.env.VITE_API_BASE_URL + import.meta.env.VITE_API_HOME_URL + '?user_id=' + user_id;
             dynamic_headers = {
@@ -105,7 +106,7 @@ console.log(daysInProgram)
             full_url = import.meta.env.VITE_API_BASE_URL + import.meta.env.VITE_API_HOME_URL;
             dynamic_headers = {
                  'Content-Type': 'application/json',
-                 'AppVersion': '1.12.1',
+                 'AppVersion': '100.0.0',
                   'Coach-Authorization': `${auth_token}`,
             }
         }
@@ -170,6 +171,11 @@ setIsLoading(true);
 axios.get(`${full_url}${currentDayRequest}`, {
 // axios.get('https://coach-preprod-cf87bfd42b85.herokuapp.com/api/v1/daily_plan/v3/?user_id=ios_UbQiZWExZ1XdBo618lYNz7jf4NI4', {
       headers: dynamic_headers
+//  headers: {
+//                  'Content-Type': 'application/json',
+//                  'AppVersion': '100.0.0',
+//                   'Coach-Authorization': `${auth_token}`,
+//             }
 //      headers: {
 //      'Content-Type': 'application/json',
 //         'AppVersion': '1.12.1',
