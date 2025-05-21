@@ -230,12 +230,12 @@ return (<>
                return (
         <>
         <div className='main_container'>
-         <header className="visible flex items-center justify-between pr-5 pl-5 pt-5">
+         <header className="visible flex items-center justify-between pt-5">
         <div className="flex-column gap-2">
             <h3 className="text-xl font-bold new_york_medium_font">{headline}</h3>
             <div className="">
                 <span className='smallProgress flex items-start pt-3'>
-  <progress className='h-1.5 w-20' value={progress} max={100} />
+  <progress className='h-1.5 w-12' value={progress} max={100} />
       &nbsp;
                   <sup className="text-xs text-[#696E6C] font-bold tracking-widest">{progress}%</sup>
                 </span>
@@ -251,7 +251,7 @@ return (<>
 
     <hr className="visible text-gray-200" />
 
-    <div className="visible flex items-center justify-between pr-5 pl-5 pt-3">
+    <div className="visible flex items-center justify-between pt-3">
      
 <img
 onClick={() => {
@@ -272,7 +272,7 @@ setCurrentDay(currentDay + 1);
 className="cursor-pointer" src={rightArrov} alt="" />
     </div>
 
-    <div className="visible flex pr-5 pl-5 pt-5">
+    <div className="visible flex pt-5">
 <p className="text-[#696E6C] text-[10px] uppercase font-bold sp_pro_text_medium_font wide">Daily lessons</p>
     </div>
 
@@ -281,7 +281,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
 
 theoryLessons.map((lesson: any, idx: number) => (
       <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
-  <div className="visible columns pr-5 pl-5 pt-1 mt-2 mb-2 ">
+  <div className="visible columns pt-1 mt-2 mb-2 ">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />
@@ -309,7 +309,7 @@ theoryLessons.map((lesson: any, idx: number) => (
 
 
 
-       <div className="visible flex pr-5 pl-5 pt-3">
+       <div className="visible flex pt-3">
         <p className="text-[#696E6C] text-[10px] uppercase font-bold sp_pro_text_medium_font wide">Daily practice</p>
             </div>
 
@@ -318,7 +318,7 @@ theoryLessons.map((lesson: any, idx: number) => (
 
 practiceLessons.map((lesson: any, idx: number) => (
      <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
-  <div className="visible columns pr-5 pl-5 pt-1 mt-2 mb-2 ">
+  <div className="visible columns pt-1 mt-2 mb-2 ">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />

@@ -26,7 +26,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({ lesson_data }) => {
 <p className="font-bold new_york_medium_font text-[18px] ">{lessonData.plate_name}</p>
     </div>
 
-    <div className="visible flex justify-between pl-5 pr-5">
+    <div className="visible flex justify-between">
         <img
         onClick={() => {
             if (currentPage > 1) {

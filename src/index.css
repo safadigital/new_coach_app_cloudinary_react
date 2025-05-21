@@ -18,6 +18,11 @@ flex-direction: column;
     max-width: 800px;
 } */
 
+ .main_container {
+    padding-left: 20px;
+    padding-right: 20px;
+ }
+
 @media(min-width: 900px) {
     .main_container {
     /* max-width: 800px; */
