@@ -189,13 +189,16 @@ axios.get(`${full_url}${currentDayRequest}`, {
 .then((response: any) => {
     console.log('DATA FROM SERVER FROM MAIN WINDOW:', response.data);
    // setData(response.data);
-  // setCurrentDay(response.data.plan[0].day_in_program);
+ //  if (currentDay != 1) {
+ setCurrentDay(response.data.plan[0].day_in_program);
+ //  }
+  
     if (currentDayRequest == '') {
 setDailyPlanData(response.data);
 // setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
-//  setCurrentDay(response.data?.plan[0]?.day_in_program);
-setProgress(Math.ceil((1 / response.data?.plan[0]?.total_days) * 100));
- setCurrentDay(1);
+  setCurrentDay(response.data?.plan[0]?.day_in_program);
+setProgress(Math.ceil((currentDay / response.data?.plan[0]?.total_days) * 100));
+ // setCurrentDay(1);
     } else {
         setDailyPlanData(response.data);
         setCurrentDay(currentDay);
