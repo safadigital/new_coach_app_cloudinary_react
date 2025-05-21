@@ -23,6 +23,8 @@ export function getLessonContent(freetext_content: any[], image_content: any[], 
 
 const combinedArray = new_freetext_arr.concat(new_image_arr, new_quiz_arr, new_rating_arr, new_text_arr, new_video_arr);
 
+combinedArray.sort((a, b) => a.content_order - b.content_order);
+
 console.log(`SELECTED CONTENT FOR PAGE ${current_page}: `, combinedArray);
 
 return combinedArray;
