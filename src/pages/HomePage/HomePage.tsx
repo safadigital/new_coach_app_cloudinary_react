@@ -113,11 +113,11 @@ console.log(daysInProgram)
  
   let currentDayRequest = '';
 if (!!dailyPlanData.plan && !!auth_token) {
-  currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `?date=${dailyPlanData.date}&last_longer=${currentDay}` : '';
+  currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `?date=${dailyPlanData.date}&${dailyPlanData?.plan[0]?.name}=${currentDay}` : '';
 }
 
 if (!!dailyPlanData.plan && !!auth_token === false) {
-  currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `&date=${dailyPlanData.date}&last_longer=${currentDay}` : '';
+  currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `&date=${dailyPlanData.date}&${dailyPlanData?.plan[0]?.name}=${currentDay}` : '';
 }
 
 //   let baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -188,6 +188,7 @@ axios.get(`${full_url}${currentDayRequest}`, {
 })
 .then((response: any) => {
     console.log('DATA FROM SERVER FROM MAIN WINDOW:', response.data);
+    setDailyPlanData(response.data);
    // setData(response.data);
  //  if (currentDay != 1) {
  setCurrentDay(response.data.plan[0].day_in_program);
