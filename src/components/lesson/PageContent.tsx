@@ -6,6 +6,8 @@ import playIcon from '../../assets/play_button.svg';
 
 import { Link, useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
 // mock data
 // import lessonData from '../../mock_data/lesson_data.json';
 
@@ -34,6 +36,36 @@ const video = lessonData.video_content ? lessonData.video_content : [];
  const pageContentItems = getLessonContent(freeText, image, quiz, rating, text, video, currentPage);
 
 // console.log(" PAGE CONTENT ITEMS ON CONTENT PAGE: ", pageContentItems);
+// /api/v1/coachprogram/lessons/<str:lesson_id>/done
+
+const handleFinishLesson = () => {
+    const auth_token = localStorage.getItem("uid");
+    let dynamic_headers = {};
+    if (!!auth_token === true) {
+        dynamic_headers = {
+            'Content-Type': 'application/json',
+                 'AppVersion': '100.0.0',
+                  'Coach-Authorization': `${auth_token}`,
+        }
+    } else {
+           dynamic_headers = {
+             'Content-Type': 'application/json',
+                'AppVersion': '1.12.1',
+            'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+        }
+    }
+
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}${import.meta.env.VITE_API_LESSONS_URL}${lessonData.lesson_id}/done`, {
+        "program_id": lessonData.program_id
+    }, {
+        headers: dynamic_headers
+    }).then((response: any) => {
+console.log(" Response when finished lesson: ", response);
+navigate('/');
+    }).catch(error => {
+    console.error('Error:', error);
+});
+}
 
     return (
         <>
@@ -65,6 +97,11 @@ const video = lessonData.video_content ? lessonData.video_content : [];
             if (item.content_type == 'normal_text') {
                 return <p key={idx} className="new_york_medium_font text-[16px] pb-[16px]">{item.text}</p>
             }
+            if (item.content_type == 'important_text') {
+                return <div key={idx} className="visible flex bg-[#CBDCB533] mr-5 ml-5 left_green_border">
+        <p className="new_york_medium_font text-[16px] pl-5 pr-5 mt-[24px] mb-[24px]">{item.text}</p>
+    </div>
+            }
             if (item.content_type == 'header') {
                 return <h1 key={idx} className="page_h1 new_york_heavy_font pb-[16px] tracking-[-2%] text-[24px]">{item.text}</h1>
             }
@@ -87,11 +124,7 @@ const video = lessonData.video_content ? lessonData.video_content : [];
 
 {
     currentPage == lessonData.pages ?  <div className="bg-[#fff] w-full fixed bottom-0 pt-10 pb-5 pl-5 broad_desktop"> <button
-        onClick={() => {
-            setCurrentPage(1); 
-            navigate('/');
-             
-        }}
+        onClick={handleFinishLesson}
         className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold w-[100%] pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Finish</button></div> : <div></div>
 }
 
