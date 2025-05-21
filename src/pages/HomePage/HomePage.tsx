@@ -112,7 +112,11 @@ console.log(daysInProgram)
         }
  
   let currentDayRequest = '';
-if (!!dailyPlanData.plan) {
+if (!!dailyPlanData.plan && !!auth_token) {
+  currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `?date=${dailyPlanData.date}&last_longer=${currentDay}` : '';
+}
+
+if (!!dailyPlanData.plan && !!auth_token === false) {
   currentDayRequest = dailyPlanData?.plan[0]?.day_in_program != currentDay ? `&date=${dailyPlanData.date}&last_longer=${currentDay}` : '';
 }
 
