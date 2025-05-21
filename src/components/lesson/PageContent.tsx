@@ -69,7 +69,7 @@ navigate('/');
 
     return (
         <>
-        <div className="visible broad_desktop flex-column  pl-5 pr-5 pt-20 pb-20 overflow-y-auto low ">
+        <div className="visible broad_desktop flex-column  pl-5 pr-5 overflow-y-auto low ">
 
       
       {
@@ -98,7 +98,7 @@ navigate('/');
                 return <p key={idx} className="new_york_medium_font text-[16px] pb-[16px]">{item.text}</p>
             }
             if (item.content_type == 'important_text') {
-                return <div key={idx} className="visible flex bg-[#CBDCB533] mr-5 ml-5 left_green_border">
+                return <div key={idx} className="visible flex bg-[#CBDCB533] left_green_border pt-2 pb-5 mb-5">
         <p className="new_york_medium_font text-[16px] pl-5 pr-5 mt-[24px] mb-[24px]">{item.text}</p>
     </div>
             }
