@@ -58,6 +58,7 @@ setCurrentTime(videoRef.current.currentTime);
     // return <h1>VideoPlayer. Video Item previw url: {videoItem.preview_url}</h1>
     return (
     <>
+    <div className="main_container">
    <div
    onClick={handleVideoNavShown}
    className='flex h-screen justify-center'>
@@ -70,13 +71,13 @@ setCurrentTime(videoRef.current.currentTime);
 
 {
   isVideoNavShown && (
-    <div className='overlay'>
-<div className='fixed flex bottom-5 cursor-pointer text-[#fff] ml-10 mr-10'>
+    <div className='overlay '>
+<div className='fixed flex bottom-5 cursor-pointer text-[#fff] '>
    <div
   onClick={() => {
      navigate(`/lesson?lesson_id=${lessonData.lesson_id}`);
   }}
-  className='visible top-[2%] fixed flex flex-start w-[40px] h-[40px] bg-[#141D19] items-center justify-center rounded-full cursor-pointer'>
+  className='visible top-[2%] fixed flex  w-[40px] h-[40px] bg-[#141D19] items-center justify-center rounded-full cursor-pointer'>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-[#fff] font-bold">
   <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
 </svg>
@@ -91,7 +92,7 @@ setCurrentTime(videoRef.current.currentTime);
   Day {currentDay}
 </div>
 
-<div className="bottom-[16%] w-[80%] fixed flex justify-between text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] ">
+<div className="bottom-[16%] fixed flex justify-between text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] ">
   <div>
  {  timeToString({ time:  currentTime})}
   </div>
@@ -102,7 +103,7 @@ setCurrentTime(videoRef.current.currentTime);
 
 </div>
 
-  <div className="bottom-[20%] w-[80%] fixed flex h-1">
+  <div className="bottom-[20%] ml-3 fixed flex h-1">
      <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="w-full flex h-1 " />
 
   </div>
@@ -116,7 +117,7 @@ onClick={ () => {
     videoRef.current.playbackRate = 2;
     handleVideoNavShown();
 }}
-className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center items-center rounded-full cursor-pointer'>
+className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex items-center rounded-full cursor-pointer'>
     <span className="">
 2x
     </span>
@@ -129,7 +130,7 @@ onClick={ () => {
     videoRef.current.playbackRate = 1;
     handleVideoNavShown();
 }}
-className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex justify-center items-center rounded-full cursor-pointer'>
+className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex  items-center rounded-full cursor-pointer'>
 <span>1x</span>
   </span>
     )
@@ -218,7 +219,7 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
   )
 }
 
-     
+     </div>
     </>
   )
 }
