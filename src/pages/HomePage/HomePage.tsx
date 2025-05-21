@@ -245,8 +245,9 @@ return (<>
           
         </div>
     
+    <Link to={'/profile'}>
         <img className="cursor-pointer w-[31px] h-[31px]" src={profileImg} alt="" />
-       
+       </Link>
     </header>
 
     <hr className="visible text-gray-200" />

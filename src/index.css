@@ -21,6 +21,7 @@ flex-direction: column;
  .main_container {
     padding-left: 20px;
     padding-right: 20px;
+    max-width: 500px;
  }
 
 @media(min-width: 900px) {
@@ -189,6 +190,7 @@ progress[value]::-moz-progress-bar {
 .columns {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    /* max-height: 104px; */
     /* grid-column-gap: auto; */
 
     /* padding-left: 15px;
