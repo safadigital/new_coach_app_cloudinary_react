@@ -108,6 +108,12 @@ navigate('/');
              if (item.content_type == 'img_landscape') {
                 return <img src={item.img_url} />
             }
+            if (item.content_type == 'img_portrait') {
+                return <img src={item.img_url} />
+            }
+             if (item.content_type == 'img_square') {
+                return <img src={item.img_url} />
+            }
 
         })
       }
