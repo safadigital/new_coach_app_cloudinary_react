@@ -69,7 +69,7 @@ navigate('/');
 
     return (
         <>
-        <div className="visible broad_desktop flex-column  pl-5 pr-5 overflow-y-auto low ">
+        <div className="visible broad_desktop flex-column  pl-5 pr-5 overflow-y-auto low pt-20">
 
       
       {
