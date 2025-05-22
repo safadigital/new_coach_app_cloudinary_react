@@ -52,7 +52,7 @@ const HomePage = () => {
 
   //  console.log("params from user: ", params);
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
    // const [data, setData] = useState<any>({});
 
@@ -236,7 +236,7 @@ return (
                return (
         <>
         <div className='main_container'>
-            <div className='fixed top-0 bg-white h-[150px] mb-10 w-[90%] max_width'>
+            <div className='fixed top-0 bg-white h-[150px] mb-5 w-[90%] max_width'>
 
         
     <header className="visible flex items-center justify-between pt-5">
@@ -283,7 +283,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
     </div>
     </div>
 
-<div className='mt-30'>
+<div className='mt-35'>
 
 {
     !!theoryLessons.length && (
