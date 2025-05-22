@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useStore from "../../store/store";
 import { getLessonContent } from "../../utils/lesson_content";
 
@@ -18,10 +18,14 @@ interface PageContentProps {
 
 const PageContent: React.FC<PageContentProps> = ({ lesson_data }) => {
 
-    const { currentPage, setCurrentPage, lessonData } = useStore();
+    const { currentPage, setCurrentPage, lessonData, setLessonData } = useStore();
     const navigate = useNavigate();
 
-    console.log(lesson_data);
+ //   console.log(lesson_data);
+ useEffect(() => {
+setLessonData(lesson_data);
+ }, [])
+
 // console.log("Whole lesson data from store: ", lessonData);
 
 // const lessonData = lesson_data;
