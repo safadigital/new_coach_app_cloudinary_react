@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 // import data from '../../mock_data/daily_plan.json';
 import { useEffect, useState } from 'react';
  import { useLocation } from 'react-router-dom';
+import Loader from '../../components/loader/Loader';
 //import { logout } from '../../utils/logout';
 //interface Props {}
 
@@ -228,12 +229,9 @@ setProgress(Math.ceil((currentDay / response.data?.plan[0]?.total_days) * 100));
     { 
         
         if (isLoading === true) {
-return (<>
-
-<div className='w-full h-full flex items-center justify-center'>
-<h1>Loading</h1>
-</div>
-</>) 
+return (
+    <Loader />
+) 
         } else {
                return (
         <>
