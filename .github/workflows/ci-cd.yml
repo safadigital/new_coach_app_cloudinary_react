@@ -1,0 +1,31 @@
+name: CI/CD for React App
+
+on:
+  push:
+    branches:
+      - develop  # или ваша основная ветка
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+       
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Укажите нужную версию Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to DigitalOcean
+        env:
+          DO_API_TOKEN: ${{ secrets.DO_API_TOKEN }}
+        run: |
+          ssh -o StrictHostKeyChecking=no root@your_droplet_ip "cd /path/to/your/app && git pull origin develop && npm install && npm run build"
