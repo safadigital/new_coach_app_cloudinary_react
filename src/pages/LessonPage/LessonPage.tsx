@@ -7,11 +7,12 @@ import LessonHeader from '../../components/lesson/LessonHeader';
 import PageContent from '../../components/lesson/PageContent';
 
  import { useLocation } from 'react-router-dom';
+import Loader from '../../components/loader/Loader';
 
 
 const LessonPage = () => {
 
-//    const [ setIsLoading] = useState(false);
+    const [ isLoading, setIsLoading] = useState(false);
    // const [data] = useState<any>(thedata);
    const [data, setData] = useState<any>({});
 
@@ -54,6 +55,7 @@ TODO
 useEffect(() => {
  //   setData(thedata);
  //   setDataToStore();
+ setIsLoading(true);
    const baseUrl = import.meta.env.VITE_API_BASE_URL;
    const lessonsUrl = import.meta.env.VITE_API_LESSONS_URL;
   //  const baseurl = "/api/v1/coachprogram/lessons/";
@@ -87,6 +89,8 @@ setTotalPages(response.data.pages);
 setLessonTitle(response.data.plate_name);
  setCurrentPage(1);
 
+ setIsLoading(false);
+
 })
 .catch(error => {
     console.error('Error:', error);
@@ -101,18 +105,24 @@ setLessonTitle(response.data.plate_name);
 
 }, [])
 
-    return (
+
+  {
+      if (isLoading === true) {
+        return (
+          <Loader />
+        )
+      } else {
+ return (
     <>
-    {/* { isLoading === true ? */}
    <LessonHeader lesson_data={data}  /> 
    <PageContent lesson_data={data} />
-   
-   {/* : <h1>Data is loading...</h1>  } */}
-    
     </>
-       
-       
     )
+      }
+    }
+
+
+   
 }
 
 export default LessonPage;
