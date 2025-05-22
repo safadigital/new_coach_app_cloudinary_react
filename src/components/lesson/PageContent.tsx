@@ -68,6 +68,7 @@ console.log(" Response when finished lesson: ", response);
 navigate('/');
     }).catch(error => {
     console.error('Error:', error);
+    navigate('/');
 });
 }
 
