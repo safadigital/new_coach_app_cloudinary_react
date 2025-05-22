@@ -18,6 +18,25 @@ flex-direction: column;
     max-width: 800px;
 } */
 
+@media(min-width: 501px) {
+    .max_width {
+        max-width: 450px;
+    }
+}
+
+    .fixed-container {
+            position: fixed;
+            top: 0; /* Position from the top */
+            left: 0; /* Position from the left */
+            width: 100%; /* Full width */
+            background-color: #333; /* Background color */
+            color: white; /* Text color */
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Space between children */
+            padding: 10px; /* Padding around the content */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Optional shadow */
+        }
+
  .main_container {
     padding-left: 20px;
     padding-right: 20px;

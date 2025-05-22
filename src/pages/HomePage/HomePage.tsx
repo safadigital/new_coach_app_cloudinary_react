@@ -236,6 +236,8 @@ return (
                return (
         <>
         <div className='main_container'>
+            <div className='fixed top-0 bg-white h-[150px] mb-10 w-[90%] max_width'>
+
         
     <header className="visible flex items-center justify-between pt-5">
         <div className="flex-column gap-2">
@@ -279,6 +281,9 @@ setCurrentDay(currentDay + 1);
 } }
 className="cursor-pointer" src={rightArrov} alt="" />
     </div>
+    </div>
+
+<div className='mt-30'>
 
 {
     !!theoryLessons.length && (
@@ -357,8 +362,9 @@ className="cursor-pointer" src={rightArrov} alt="" />
 ))
 
 }
-
-      </div>
+</div>
+</div>
+     
         </>
     )
         }
