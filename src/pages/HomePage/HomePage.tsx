@@ -218,11 +218,16 @@ setProgress(Math.ceil((currentDay / response.data?.plan[0]?.total_days) * 100));
     setDayInProgram(response.data?.plan[0]?.day_in_program);
     // setProgress(Math.ceil((response.data?.plan[0]?.day_in_program / response.data?.plan[0]?.total_days) * 100));
 
-    setIsLoading(false);
+    setTimeout(() => {
+ setIsLoading(false);
+    }, 0)
+
+   
 
 })
 .catch(error => {
     console.error('Error:', error);
+        setIsLoading(false);
 });
     }, [currentDay])
 
@@ -297,7 +302,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
 
 {
 
-!!theoryLessons && theoryLessons.map((lesson: any, idx: number) => (
+!!theoryLessons.length && theoryLessons.map((lesson: any, idx: number) => (
       <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
   <div className="visible columns pt-1 mt-2 mb-2 ">
   
@@ -338,7 +343,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
         )
     }
 {
-!!practiceLessons &&  practiceLessons.map((lesson: any, idx: number) => (
+!!practiceLessons.length && practiceLessons.map((lesson: any, idx: number) => (
      <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
   <div className="visible columns pt-1 mt-2 mb-2 ">
   
