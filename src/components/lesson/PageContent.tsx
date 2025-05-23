@@ -130,13 +130,13 @@ navigate('/');
             setCurrentPage(currentPage + 1); 
             window.scrollTo(0, 0); 
         }}
-        className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold w-[100%] pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Continue</button></div> : <div></div>
+        className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Continue</button></div> : <div></div>
 }
 
 {
     currentPage == lessonData.pages ?  <div className="bg-[#fff] w-full fixed bottom-0 pt-10 pb-5 pl-5 broad_desktop"> <button
         onClick={handleFinishLesson}
-        className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold w-[100%] pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Finish</button></div> : <div></div>
+        className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Finish</button></div> : <div></div>
 }
 
        

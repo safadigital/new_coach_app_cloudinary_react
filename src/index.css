@@ -405,3 +405,15 @@ object-fit: cover;
     width: 100%;
     height: auto;
 }
+
+/* the content buttons -finish and continue */
+.the_content_button {
+    width: 90%;
+    /* margin-top: 20%; */
+}
+
+@media(min-width: 900px) {
+    .the_content_button {
+    width: 100%;
+}
+}
