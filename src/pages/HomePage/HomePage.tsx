@@ -8,7 +8,7 @@ import useStore from '../../store/store';
 
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // fake data
 // import data from '../../mock_data/daily_plan.json';
@@ -22,7 +22,7 @@ import Loader from '../../components/loader/Loader';
 
 const HomePage = () => {
 
- //  const navigate = useNavigate();
+   const navigate = useNavigate();
 
  //   const [userId, setUserId] = useState("ios_p1W7YHzv2DblPDIYNUWGuV8A5s02");
 
@@ -97,6 +97,10 @@ console.log(daysInProgram)
         let auth_token = localStorage.getItem("uid");
         console.log(" auth token from local storage: ", auth_token)
         if (user_id !== undefined) {
+            // записываем userid в local storag
+            localStorage.setItem("uid", user_id);
+            // переходим на главную страницу как зарегистированный пользвлоатель
+            navigate('/');
             full_url = import.meta.env.VITE_API_BASE_URL + import.meta.env.VITE_API_HOME_URL + '?user_id=' + user_id;
             dynamic_headers = {
                  'Content-Type': 'application/json',
@@ -304,7 +308,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
 
 !!theoryLessons.length && theoryLessons.map((lesson: any, idx: number) => (
       <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
-  <div className="visible columns pt-1 mt-2 mb-2 h-[100px]">
+  <div className="visible columns pt-1 mt-2 mb-2">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />
@@ -345,7 +349,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
 {
 !!practiceLessons.length && practiceLessons.map((lesson: any, idx: number) => (
      <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
-  <div className="visible columns pt-1 mt-2 mb-2 h-[100px]">
+  <div className="visible columns pt-1 mt-2 mb-2">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />
