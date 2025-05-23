@@ -74,13 +74,13 @@ navigate('/');
 
     return (
         <>
-        <div className="visible broad_desktop flex-column  pl-5 pr-5 overflow-y-auto low pt-20">
+        <div className="visible broad_desktop flex-column ml-2 mr-2 overflow-y-auto low pt-20">
 
       
       {
         pageContentItems && pageContentItems.map((item: any, idx: number) => {
             if (item.content_type == 'section') {
-                return <h3 key={idx} className="text-[#FF6D03] sp_pro_text_medium_font text-[14px] font-bold tracking-[6%] uppercase pt-2 pb-2">{item.text}</h3>
+                return <h3 key={idx} className="text-[#FF6D03] sp_pro_text_medium_font text-[14px] font-bold tracking-[6%] uppercase pt-5 pb-5">{item.text}</h3>
             }
              if (item.content_type == 'video') {
                 return <div key={idx} className="pb-2"> 
@@ -100,7 +100,7 @@ navigate('/');
     </div></div>
             }
             if (item.content_type == 'normal_text') {
-                return <p key={idx} className="new_york_medium_font text-[16px] pb-[16px]">{item.text}</p>
+                return <p key={idx} className="new_york_medium_font text-[16px] pb-5">{item.text}</p>
             }
             if (item.content_type == 'important_text') {
                 return <div key={idx} className="visible flex bg-[#CBDCB533] left_green_border pt-2 pb-5 mb-5">
@@ -125,7 +125,7 @@ navigate('/');
         </div>
 
 {
-    currentPage < lessonData.pages ?  <div className="bg-[#fff] w-full fixed bottom-0 pt-10 pb-5 pl-5 broad_desktop"> <button
+    currentPage < lessonData.pages ?  <div className="bg-[#fff] fixed bottom-0 pt-2 mt-2 pb-5 broad_desktop the_content_button"> <button
         onClick={() => {
             setCurrentPage(currentPage + 1); 
             window.scrollTo(0, 0); 
@@ -134,9 +134,9 @@ navigate('/');
 }
 
 {
-    currentPage == lessonData.pages ?  <div className="bg-[#fff] w-full fixed bottom-0 pt-10 pb-5 pl-5 broad_desktop"> <button
+    currentPage == lessonData.pages ?  <div className="bg-[#fff] fixed bottom-0 pt-2 mt-2 pb-5 broad_desktop the_content_button"> <button
         onClick={handleFinishLesson}
-        className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Finish</button></div> : <div></div>
+       className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Finish</button></div> : <div></div>
 }
 
        
