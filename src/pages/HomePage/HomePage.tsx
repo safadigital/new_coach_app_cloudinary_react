@@ -311,7 +311,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
     </div>
     <div className="flex-column bottomrightrounded toprightrounded content-between bg-[#F3F4F4] pl-3 pr-[16px] pt-[16px] pb-[16px] bottom_shadow">
         <div className="flex flex-row w-full justify-between items-center">
-            <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
+            <p className="text-[16px] font-bold new_york_heavy_font mr-1 leading-[20px]">{lesson.headline}</p>
               
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
           
@@ -352,7 +352,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
     </div>
     <div className="flex-column bottomrightrounded toprightrounded content-between bg-[#F3F4F4] pl-3 pr-[16px] pt-[16px] pb-[16px] bottom_shadow">
         <div className="flex flex-row w-full justify-between items-center">
-            <p className="text-[16px] font-bold new_york_medium_font mr-1">{lesson.headline}</p>
+            <p className="text-[16px] font-bold new_york_heavy_font mr-1 leading-[20px]">{lesson.headline}</p>
 
             <img className="w-[30px] h-[30px]" src={ lesson.completed ? statusDone : statusNext} alt="" />
             
