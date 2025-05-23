@@ -6,6 +6,8 @@ import supportImg from '../../assets/icon_support.svg';
 import faqImg from '../../assets/icon_faq.svg';
 import termsImg from '../../assets/icon_terms.svg';
 
+import { Link } from 'react-router-dom';
+
 const ProfilePage = () => {
 
     return (
@@ -19,7 +21,7 @@ const ProfilePage = () => {
     <div className="visible bg-[#F3F4F4] profile w-full pt-5">
 <img className="w-[90px] h-[90px]" src={profileImg} alt="" />
 <p className="text-[18px] font-bold new_york_medium_font">
-    John Smith
+    {/* John Smith */}
             </p>
             <button className="subscribe mt-[10px] mb-[20px] sp_pro_text_medium_font">Premium subscriber</button>
     </div>
@@ -62,6 +64,8 @@ const ProfilePage = () => {
       {/* <!-- end item --> */}
 
       {/* <!-- item --> */}
+      <Link to={'https://vamapps.com/faq'} target='_blank'>
+     
     <div className="visible bg-[#F3F4F4] mt-2 mb-1 ml-3 mr-3 p-[16px] flex justify-between items-center">
         <div className="flex justify-start">
             <img src={faqImg} alt="" />
@@ -71,9 +75,10 @@ const ProfilePage = () => {
     <img src="images/right_arrow.svg" alt="" />
 </div>
     </div>
+     </Link>
       {/* <!-- end item --> */}
    
-      
+        <Link to={'https://vamapps.com/terms_of_service'} target='_blank'>
     <div className="visible bg-[#F3F4F4] mt-2 mb-1 ml-3 mr-3 p-[16px] flex justify-between items-center">
         <div className="flex justify-start">
             <img src={termsImg} alt="" />
@@ -83,6 +88,7 @@ const ProfilePage = () => {
     <img src="images/right_arrow.svg" alt="" />
 </div>
     </div>
+    </Link>
   
 
       <div className="visible profile_buttons">

@@ -248,8 +248,8 @@ return (
         <div className="flex-column gap-2">
             <h3 className="text-xl font-bold new_york_medium_font">{headline}</h3>
             <div className="">
-                <span className='smallProgress flex items-start pt-3'>
-  <progress className='h-1.5 w-12' value={progress} max={100} />
+                <span className='smallProgress rounded-sm flex items-start pt-3'>
+  <progress className='h-1.5 w-12 rounded-sm brd' value={progress} max={100} />
       &nbsp;
                   <sup className="text-xs text-[#696E6C] font-bold tracking-widest">{progress}%</sup>
                 </span>
@@ -304,7 +304,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
 
 !!theoryLessons.length && theoryLessons.map((lesson: any, idx: number) => (
       <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
-  <div className="visible columns pt-1 mt-2 mb-2 ">
+  <div className="visible columns pt-1 mt-2 mb-2 h-[100px]">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />
@@ -337,7 +337,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
        {
 
         !!practiceLessons.length && (    
-       <div className="visible flex pt-3">
+       <div className="visible flex pt-5">
         <p className="text-[#696E6C] text-[10px] uppercase font-bold sp_pro_text_medium_font wide">Daily practice</p>
             </div>
         )
@@ -345,7 +345,7 @@ className="cursor-pointer" src={rightArrov} alt="" />
 {
 !!practiceLessons.length && practiceLessons.map((lesson: any, idx: number) => (
      <Link key={idx} to={`/lesson?lesson_id=${ lesson.link_type.coach_lesson ? lesson?.link_type?.coach_lesson?.lesson_id :  lesson?.link_type?.coach_video?.lesson_id}` }>
-  <div className="visible columns pt-1 mt-2 mb-2 ">
+  <div className="visible columns pt-1 mt-2 mb-2 h-[100px]">
   
     <div className="flex bg-[#F3F4F4] topleftrounded bottomleftrounded pt-[16px] pl-[16px] pb-[16px] bottom_shadow">
         <img className="couseimage" src={lesson.main_image} alt="" />

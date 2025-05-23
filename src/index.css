@@ -139,9 +139,27 @@ progress[value]::-moz-progress-bar {
 .smallProgress progress[value] {
   background-color: #E3DCD8;
   --color: #FF6D03;
-  /* border-radius: 2px;
+  /* 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; */
 }
+
+.smallProgress progress {
+    border-radius: 5px !important;
+     border-collapse: separate; 
+     z-index: 0;
+}
+
+progress {
+    border-radius: 5px !important;
+    border-collapse: separate; 
+    z-index: 0;
+    transform: translateY(0);
+}
+
+.brd {
+      border-radius: 5px !important;
+}
+
 
 
 /* Globar font styles */
@@ -209,6 +227,7 @@ progress[value]::-moz-progress-bar {
 .columns {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    grid-auto-rows: 1fr;
     /* max-height: 104px; */
     /* grid-column-gap: auto; */
 
