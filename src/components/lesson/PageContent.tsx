@@ -80,10 +80,10 @@ navigate('/');
       {
         pageContentItems && pageContentItems.map((item: any, idx: number) => {
             if (item.content_type == 'section') {
-                return <h3 key={idx} className="text-[#FF6D03] sp_pro_text_medium_font text-[14px] font-bold tracking-[6%] uppercase">{item.text}</h3>
+                return <h3 key={idx} className="text-[#FF6D03] sp_pro_text_medium_font text-[14px] font-bold tracking-[6%] uppercase pt-2 pb-2">{item.text}</h3>
             }
              if (item.content_type == 'video') {
-                return <div key={idx} className=""> 
+                return <div key={idx} className="pb-2"> 
 
 <Link to={`/player?video_id=${item.content_id}`}>
                     <svg className="responsive-image" 
