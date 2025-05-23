@@ -86,11 +86,11 @@ navigate('/');
                 return <div key={idx} className=""> 
 
 <Link to={`/player?video_id=${item.content_id}`}>
-                    <svg className="" width="100%" height='auto'  viewBox="0 0 1000 1000"
+                    <svg className="responsive-image" 
  xmlns="http://www.w3.org/2000/svg" 
  xmlnsXlink="http://www.w3.org/1999/xlink">
-    <image xlinkHref={item.preview_url} x="0" y="0" height="1000" width="1000" />
-    <image className="cursor-pointer" xlinkHref={playIcon} x="40%" y="40%" height="200" width="200" />    
+    <image xlinkHref={item.preview_url}  className="responsive-image"  />
+    <image className="cursor-pointer" xlinkHref={playIcon} x="40%" y="40%" height="50" width="50" />    
 </svg>
 </Link>
 
@@ -111,13 +111,13 @@ navigate('/');
                 return <h1 key={idx} className="page_h1 new_york_heavy_font pb-[16px] tracking-[-2%] text-[24px]">{item.text}</h1>
             }
              if (item.content_type == 'img_landscape') {
-                return <img src={item.img_url} />
+                return <img className="pb-2" src={item.img_url} />
             }
             if (item.content_type == 'img_portrait') {
-                return <img src={item.img_url} />
+                return <img className="pb-2" src={item.img_url} />
             }
              if (item.content_type == 'img_square') {
-                return <img src={item.img_url} />
+                return <img className="pb-2" src={item.img_url} />
             }
 
         })

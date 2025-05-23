@@ -14,7 +14,7 @@ declare global {
 
 const VideoPlayer = () => {
 
-    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, currentTime, setCurrentTime, currentDay } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, setCurrentTime, currentDay } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
@@ -28,6 +28,8 @@ const VideoPlayer = () => {
 
     const videoItem = getLessonVideoItemById(lessonData, video_id);
 
+   // const [ setDuration] = useState(0);
+
     // console.log("Video ITEM in Playe: ", videoItem)
 
     const handleVideoNavShown = () => {
@@ -37,6 +39,18 @@ const VideoPlayer = () => {
       }, 2000)
     }
 
+     const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      setCurrentTime(videoRef.current.currentTime);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+    //  setDuration(videoRef.current.duration);
+    }
+  };
+
      useEffect(() => {
     if ( cloudinaryRef.current ) return;
 
@@ -45,13 +59,26 @@ const VideoPlayer = () => {
       cloud_name: 'demo',
     });
 
+     const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.addEventListener('timeupdate', handleTimeUpdate);
+      videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+    }
+
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener('timeupdate', handleTimeUpdate);
+        videoElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      }
+    };
+
 
     
   }, []);
 
-   setInterval(() => {
-setCurrentTime(videoRef.current.currentTime);
-    }, 1000)
+//    setInterval(() => {
+// setCurrentTime(videoRef.current.currentTime ? videoRef.current.currentTime : 0 );
+//     }, 1000)
 
   console.log("VIDEO PLAYER DATA: ", videoRef.current);
 
@@ -83,7 +110,7 @@ setCurrentTime(videoRef.current.currentTime);
 </svg>
   </div>
 
-
+<div className="">
   <div className='visible bottom-[30%] fixed flex text-[#FFF] font-bold text-[18px] new_york_medium_font'>
     {videoItem.video_name}
   </div>
@@ -92,21 +119,28 @@ setCurrentTime(videoRef.current.currentTime);
   Day {currentDay}
 </div>
 
-<div className="bottom-[16%] fixed flex justify-between text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] ">
+<div className="bottom-[16%] fixed flex justify-between text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] w-full">
   <div>
- {  timeToString({ time:  currentTime})}
+ {  timeToString({ time:  videoRef.current.currentTime})}
   </div>
 
   <div>
-   {  timeToString({ time:  videoRef.current.duration ? videoRef.current.duration : 0})}
+   {  timeToString({ time:  videoRef.current.duration})}
   </div>
 
 </div>
 
-  <div className="bottom-[20%] ml-3 fixed flex h-1">
-     <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="w-full flex h-1 " />
+  <div className="bottom-[20%] fixed flex h-1 w-[320px]">
+     <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="w-100 flex h-1 " />
 
   </div>
+
+  </div>
+
+
+{/* player navigation div */}
+<div className="flex justify-around ml-5">
+
 
 
 {
@@ -117,8 +151,8 @@ onClick={ () => {
     videoRef.current.playbackRate = 2;
     handleVideoNavShown();
 }}
-className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex items-center rounded-full cursor-pointer'>
-    <span className="">
+className='text-[#fff] bg-black h-[25px] w-[25px] mt-5 flex rounded-full justify-center items-center cursor-pointer mr-3'>
+    <span className="ml-1">
 2x
     </span>
 
@@ -130,8 +164,9 @@ onClick={ () => {
     videoRef.current.playbackRate = 1;
     handleVideoNavShown();
 }}
-className='text-[#fff] bg-black h-[25px] w-[25px] mr-7 mt-5 flex  items-center rounded-full cursor-pointer'>
-<span>1x</span>
+className='text-[#fff] bg-black h-[25px] w-[25px] mt-5 flex justify-center  items-center rounded-full cursor-pointer mr-3'>
+ <span className="ml-1">
+  1x</span>
   </span>
     )
 }
@@ -168,10 +203,6 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
 }
 
 </span>
-
- 
-
-
 
 
 
@@ -213,6 +244,7 @@ xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={
     )
 }
  
+</div>
 </div>
     
    </div>
