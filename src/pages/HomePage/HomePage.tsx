@@ -8,7 +8,7 @@ import useStore from '../../store/store';
 
 import axios from 'axios';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // fake data
 // import data from '../../mock_data/daily_plan.json';
@@ -22,7 +22,7 @@ import Loader from '../../components/loader/Loader';
 
 const HomePage = () => {
 
-   const navigate = useNavigate();
+ //  const navigate = useNavigate();
 
  //   const [userId, setUserId] = useState("ios_p1W7YHzv2DblPDIYNUWGuV8A5s02");
 
@@ -100,7 +100,8 @@ console.log(daysInProgram)
             // записываем userid в local storag
             localStorage.setItem("uid", user_id);
             // переходим на главную страницу как зарегистированный пользвлоатель
-            navigate('/');
+            location.replace('/');
+        //    navigate('/');
             full_url = import.meta.env.VITE_API_BASE_URL + import.meta.env.VITE_API_HOME_URL + '?user_id=' + user_id;
             dynamic_headers = {
                  'Content-Type': 'application/json',
