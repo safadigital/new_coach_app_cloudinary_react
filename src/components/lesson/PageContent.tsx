@@ -108,7 +108,7 @@ navigate('/');
     </div>
             }
             if (item.content_type == 'header') {
-                return <h1 key={idx} className="page_h1 new_york_heavy_font pb-[16px] tracking-[-2%] text-[24px]">{item.text}</h1>
+                return <h1 key={idx} className="page_h1 new_york_large_bold pb-[16px] tracking-[-2%] text-[24px] leading-[32px]">{item.text}</h1>
             }
              if (item.content_type == 'img_landscape') {
                 return <img className="pb-2" src={item.img_url} />

@@ -188,6 +188,11 @@ progress {
     src: url('./assets/fonts/fonnts.com-New_York_Small_Medium.ttf') format('truetype'); 
 }  
 
+@font-face {
+    font-family: 'New York Large Bold';
+    src: url('./assets/fonts/NewYorkLarge-Bold.ttf') format('truetype'); 
+}  
+
 
 /* fonts */
 .new_york_font {
@@ -200,6 +205,10 @@ progress {
 
 .new_york_medium_font {
     font-family: 'New York Medium';
+}
+
+.new_york_large_bold {
+    font-family: 'New York Large Bold';
 }
 
 .sp_pro_text_font {
