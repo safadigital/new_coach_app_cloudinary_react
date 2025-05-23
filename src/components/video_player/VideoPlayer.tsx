@@ -14,7 +14,7 @@ declare global {
 
 const VideoPlayer = () => {
 
-    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, setCurrentTime, currentDay } = useStore();
+    const { lessonData, isVideoPlaying, setIsVideoPlaying, isAudioMuted, setIsAudioMuted, isVideoPlaybackFast, setIsVideoPlaybackFast, isVideoNavShown, setIsVideoNavShown, currentDay } = useStore();
     const cloudinaryRef: any = useRef({});
     const videoRef: any = useRef({});
 
@@ -39,17 +39,17 @@ const VideoPlayer = () => {
       }, 2000)
     }
 
-     const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      setCurrentTime(videoRef.current.currentTime);
-    }
-  };
+  //    const handleTimeUpdate = () => {
+  //   if (videoRef.current) {
+  //     setCurrentTime(videoRef.current.currentTime);
+  //   }
+  // };
 
-  const handleLoadedMetadata = () => {
-    if (videoRef.current) {
-    //  setDuration(videoRef.current.duration);
-    }
-  };
+  // const handleLoadedMetadata = () => {
+  //   if (videoRef.current) {
+  //   //  setDuration(videoRef.current.duration);
+  //   }
+  // };
 
      useEffect(() => {
     if ( cloudinaryRef.current ) return;
