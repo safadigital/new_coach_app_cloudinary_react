@@ -422,4 +422,20 @@ object-fit: cover;
       /* margin-left: 0;
     margin-right: 0; */
 }
+
+.time-data {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    max-width: 400px !important; 
+    width: 100% !important;
+}
+}
+
+.time-data {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* max-width: 400px !important;  */
+    width: 90% !important;
 }

@@ -59,18 +59,18 @@ const VideoPlayer = () => {
       cloud_name: 'demo',
     });
 
-     const videoElement = videoRef.current;
-    if (videoElement) {
-      videoElement.addEventListener('timeupdate', handleTimeUpdate);
-      videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
-    }
+    //  const videoElement = videoRef.current;
+    // if (videoElement) {
+    //   videoElement.addEventListener('timeupdate', handleTimeUpdate);
+    //   videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+    // }
 
-    return () => {
-      if (videoElement) {
-        videoElement.removeEventListener('timeupdate', handleTimeUpdate);
-        videoElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      }
-    };
+    // return () => {
+    //   if (videoElement) {
+    //     videoElement.removeEventListener('timeupdate', handleTimeUpdate);
+    //     videoElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    //   }
+    // };
 
 
     
@@ -88,7 +88,7 @@ const VideoPlayer = () => {
     <div className="main_container">
    <div
    onClick={handleVideoNavShown}
-   className='flex h-screen justify-center'>
+   className='flex h-screen w-full'>
  <video
  src={videoItem.video_url}
   poster={videoItem.preview_url}
@@ -98,7 +98,7 @@ const VideoPlayer = () => {
 
 {
   isVideoNavShown && (
-    <div className='overlay '>
+    <div className='overlay h-screen w-full'>
 <div className='fixed flex bottom-5 cursor-pointer text-[#fff] '>
    <div
   onClick={() => {
@@ -115,22 +115,24 @@ const VideoPlayer = () => {
     {videoItem.video_name}
   </div>
 
-<div className='visible bottom-[25%] fixed flex h-1 text-[#B4B7B5] font-bold text-[16px] new_york_medium_font '>
+<div className='visible bottom-[25%] fixed flex h-1 text-[#B4B7B5] font-bold text-[16px] new_york_medium_font time-data'>
   Day {currentDay}
 </div>
 
-<div className="bottom-[16%] fixed flex justify-between text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] w-full">
+<div className="bottom-[16%] fixed  text-[#B4B7B5] font-bold text-[12px] sp_pro_text_font tracking-[10%] time-data justify-between">
+ 
   <div>
- {  timeToString({ time:  videoRef.current.currentTime})}
+ {  timeToString({ time:  videoRef.current.currentTime  ? videoRef.current.currentTime : 0})}
   </div>
 
   <div>
-   {  timeToString({ time:  videoRef.current.duration})}
+   {  timeToString({ time:  videoRef.current.duration ? videoRef.current.duration : 0})}
   </div>
+ 
 
 </div>
 
-  <div className="bottom-[20%] fixed flex h-1 w-[320px]">
+  <div className="bottom-[20%] fixed flex h-1 time-data">
      <progress value={Math.ceil((videoRef.current.currentTime / videoRef.current.duration) * 100)} max="100" className="w-100 flex h-1 " />
 
   </div>
