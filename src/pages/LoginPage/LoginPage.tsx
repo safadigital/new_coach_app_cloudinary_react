@@ -6,6 +6,7 @@ import useStore from "../../store/store";
 import loginLogo from '../../assets/login_logo.svg';
 import loginCloseIcon from '../../assets/login_close.svg';
 import emailIcon from '../../assets/email.svg';
+import eraseEmailIcon from '../../assets/erase_email.svg';
 
 // interface Props {
 //     setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
@@ -94,7 +95,7 @@ const codeHandler = (e: any) => {
 
       return (
  <>
-        <div className="login flex flex-col items-center pr-5 pl-5">
+        <div className="login flex flex-col items-center pr-5 pl-5 ">
 
 {
     isEmailSent != true && (
@@ -106,20 +107,24 @@ const codeHandler = (e: any) => {
 
      <form  method="POST"
             onSubmit={emailHandler}
-            className="">  
+            className="w-[300px] mt-5">  
    <label htmlFor="search" className=" text-sm font-medium text-gray-900 dark:text-white pt-20 sr-only">Enter your email</label>
     <div className="relative">
- <p className="absolute start-2.5 top-[1px]">Enter your email</p>
+ <p className="absolute start-2.5 top-[10px] text-[#B4B7B5] text-[10px] sp_pro_text_medium_font tracking-[10%] uppercase leading-[12px]">Enter your email</p>
         {/* <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div> */}
 
-        <input type="search" id="search" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+        <input
+        onChange={(e: any) => setEmail(e.target.value) }
+        type="email" id="email" className="block w-full text-sm pt-5 mb-2 pb-5 pl-2 new_york_font text-[16px] text-[#141D19] border bg-white" placeholder=""value={email} required />
         
+{
+    email.length > 0 ? <img className="absolute end-2.5 bottom-2.5 px-0 py-3 cursor-pointer" src={eraseEmailIcon} onClick={() => setEmail('')} alt="" /> : <img className="absolute end-2.5 bottom-2.5 px-0 py-3" src={emailIcon} alt="" />
+}
 
-<img className="absolute end-2.5 bottom-2.5 px-4 py-2" src={emailIcon} alt="" />
 
         {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
 
