@@ -203,7 +203,7 @@ progress {
 
 @font-face {
     font-family: 'Druk Cyr Heavy';
-    src: url('./assets/fonts/DrukCyr-Heavy.ttf') format('truetype'); 
+    src: url('./assets/fonts/Druk-Heavy-Cy-App.ttf') format('truetype'); 
 }  
 
 @font-face {
@@ -536,6 +536,14 @@ object-fit: cover;
     letter-spacing: -2%;
     line-height: 40px;
     text-align: center;
+}
+
+.resend {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 6%;
+    font-weight: 700;
+    padding-top: 20px;
 }
 
 

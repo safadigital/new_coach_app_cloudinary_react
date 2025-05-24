@@ -201,9 +201,15 @@ please start here
         <input
         // onChange={codeHandler}
         inputMode="decimal" {...digits[3]} />
-      
-      
       </div>
+
+<p className="text-[18px] text-[#D2D4D3] tracking-[6%] leading-[20px] new_york_medium_font pt-3">Didn't receive the code? <br />
+ <Link className="resend sp_pro_text_medium_font uppercase" to="/start" target="_blank" >
+resend code
+</Link>
+</p>
+
+
 
   {/* <form method="GET"
             onSubmit={codeHandler}
