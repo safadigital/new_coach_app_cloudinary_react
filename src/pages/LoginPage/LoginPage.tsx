@@ -72,7 +72,7 @@ const codeHandler = (e: any) => {
         e.preventDefault();
         setIsLoading(true);
         const base_token_url = import.meta.env.VITE_API_VERIFY_TOKEN_CODE_BASE_URL;
-        axios.get(base_token_url + `?code=${code}&email=${email}`, {
+        axios.get(base_token_url + `?code=${value}&email=${email}`, {
              headers: {
                  'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
                 
@@ -198,8 +198,10 @@ please start here
         <input inputMode="decimal" {...digits[1]} />
         <input inputMode="decimal" {...digits[2]} />
         {/* <span className="hyphen" /> */}
-        <input inputMode="decimal" {...digits[3]} />
-        {/* <input inputMode="decimal" {...digits[4]} /> */}
+        <input
+        // onChange={codeHandler}
+        inputMode="decimal" {...digits[3]} />
+      
       
       </div>
 

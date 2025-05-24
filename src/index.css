@@ -520,6 +520,7 @@ object-fit: cover;
 .input-group {
         display: flex;
         align-items: center;
+    padding-top: 50px;
       }
 
 .digital_number input {
@@ -530,7 +531,10 @@ object-fit: cover;
     border-radius: 4px;
     margin-right: 3px;
     margin-left: 3px;
-    font-size: 28px;
+    font-size: 32px;
+    color: #208357;
+    letter-spacing: -2%;
+    line-height: 40px;
     text-align: center;
 }
 
