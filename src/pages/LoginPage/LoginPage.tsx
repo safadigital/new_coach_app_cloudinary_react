@@ -3,6 +3,9 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import useStore from "../../store/store";
 
+import loginLogo from '../../assets/login_logo.svg';
+import loginCloseIcon from '../../assets/login_close.svg';
+
 // interface Props {
 //     setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
 // }
@@ -90,13 +93,21 @@ const codeHandler = (e: any) => {
 
       return (
  <>
-        <div className="main_container">
+        <div className="login flex flex-col items-center pr-5 pl-5">
 
 {
     isEmailSent != true && (
+        <>
+        {/* <div className="flex"> */}
+        <img className="login_logo" width={78} height={38} src={loginLogo} alt="" />
+
+        <img className="fixed top-[74px] right-1" src={loginCloseIcon} alt="" />
+{/* </div> */}
+     <h1 className="uppercase text-[#F3F4F4] text-[38px] druk_cyr_heavy_font pt-5">enter the email that is <br /> linked to your account</h1>
+
             <form method="POST"
             onSubmit={emailHandler}
-            className="w-100 h-100 flex flex-col gap-3 justify-center items-center">
+            className="">
                 <input
                 onChange={(e: any) => setEmail(e.target.value) }
                 className="border-blue-500 w-50 p-2" type="email" placeholder="johndoe@example.com" required />
@@ -107,7 +118,7 @@ const codeHandler = (e: any) => {
                     )
                 }
             </form>
-
+   </>
     )
 }
 

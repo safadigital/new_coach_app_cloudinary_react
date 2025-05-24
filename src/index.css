@@ -201,6 +201,11 @@ progress {
     src: url('./assets/fonts/NewYorkLarge-Bold.ttf') format('truetype'); 
 }  
 
+@font-face {
+    font-family: 'Druk Cyr Heavy';
+    src: url('./assets/fonts/DrukCyr-Heavy.ttf') format('truetype'); 
+}  
+
 
 /* fonts */
 .new_york_font {
@@ -227,6 +232,9 @@ progress {
     font-family: 'SP Pro Text Medium';
 }
 
+.druk_cyr_heavy_font {
+    font-family: 'Druk Cyr Heavy';
+}
 
 
 /* App styles */
@@ -474,4 +482,21 @@ object-fit: cover;
     /* justify-content: space-between; */
     /* max-width: 400px !important;  */
     width: 90% !important;
+}
+
+.login {
+    width: 100%;
+    height: 100vh;
+    background-image: url('./assets/login_bg.png');
+    background-size: cover;
+    text-align: center;
+
+}
+
+.login_logo {
+    padding-top: 96px;
+}
+
+.login h1 {
+    font-weight: 800;
 }
