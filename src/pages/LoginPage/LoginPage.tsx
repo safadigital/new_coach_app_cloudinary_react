@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const { isAuth, setIsAuth } = useStore();
+    const { isAuth } = useStore();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -33,7 +33,7 @@ const LoginPage = () => {
     const [isEmailSent, setIsEmailSent] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
 
-    const [code, setCode] = useState<string>('');
+   // const [code, setCode] = useState<string>('');
 
     useEffect(() => {
         if (isAuth === true) {
@@ -67,30 +67,32 @@ const LoginPage = () => {
 
     }
 
+    // console.log(code);
+    console.log(error);
 
-const codeHandler = (e: any) => {
-        e.preventDefault();
-        setIsLoading(true);
-        const base_token_url = import.meta.env.VITE_API_VERIFY_TOKEN_CODE_BASE_URL;
-        axios.get(base_token_url + `?code=${value}&email=${email}`, {
-             headers: {
-                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+// const codeHandler = (e: any) => {
+//         e.preventDefault();
+//         setIsLoading(true);
+//         const base_token_url = import.meta.env.VITE_API_VERIFY_TOKEN_CODE_BASE_URL;
+//         axios.get(base_token_url + `?code=${value}&email=${email}`, {
+//              headers: {
+//                  'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
                 
-            }
-        }).then((response: any) => {
-              console.log('RESPONSE FROM SERVER FROM CODE:', response);
-              setEmail('');
-              setCode('');
-              localStorage.setItem("uid", response.data.uid);
-              setIsAuth(true);
+//             }
+//         }).then((response: any) => {
+//               console.log('RESPONSE FROM SERVER FROM CODE:', response);
+//               setEmail('');
+//               setCode('');
+//               localStorage.setItem("uid", response.data.uid);
+//               setIsAuth(true);
             
-              navigate('/');
-        }).catch(error => {
-    console.error('Error for code sending handler: ', error);
-    setError(error);
-     setIsLoading(false);
-}); 
-}
+//               navigate('/');
+//         }).catch(error => {
+//     console.error('Error for code sending handler: ', error);
+//     setError(error);
+//      setIsLoading(false);
+// }); 
+// }
 
     if (isLoading === true) {
         return (
@@ -194,12 +196,13 @@ please start here
 </p>
 
  <div className="input-group flex digital_number">
-        <input className="flex flex-row justify-center items-center" inputMode="decimal" autoFocus {...digits[0]} />
-        <input inputMode="decimal" {...digits[1]} />
-        <input inputMode="decimal" {...digits[2]} />
+        <input tabIndex={1} className={value.split('')[0] ? 'green_border' : ''} inputMode="decimal" autoFocus {...digits[0]} />
+        <input tabIndex={2} className={value.split('')[1] ? 'green_border' : ''}  inputMode="decimal" {...digits[1]} />
+        <input tabIndex={3} className={value.split('')[2] ? 'green_border' : ''}   inputMode="decimal" {...digits[2]} />
         {/* <span className="hyphen" /> */}
-        <input
+        <input tabIndex={4} 
         // onChange={codeHandler}
+        className={value.split('')[3] ? 'green_border' : ''} 
         inputMode="decimal" {...digits[3]} />
       </div>
 

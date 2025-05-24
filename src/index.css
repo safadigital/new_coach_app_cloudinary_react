@@ -538,6 +538,17 @@ object-fit: cover;
     text-align: center;
 }
 
+.digital_number input:active, .digital_number input:focus {
+  border: 2px solid #208357;
+  border-radius: 4px;
+}
+
+.green_border {
+border: 2px solid #208357;
+  border-radius: 4px;
+}
+
+
 .resend {
     font-size: 14px;
     line-height: 20px;
