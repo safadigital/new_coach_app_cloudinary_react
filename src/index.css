@@ -515,3 +515,23 @@ object-fit: cover;
 .support {
     border-bottom: 1px solid #D2D4D3;
 }
+
+/* input for digital number code */
+.input-group {
+        display: flex;
+        align-items: center;
+      }
+
+.digital_number input {
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    margin-right: 3px;
+    margin-left: 3px;
+    font-size: 28px;
+    text-align: center;
+}
+
+

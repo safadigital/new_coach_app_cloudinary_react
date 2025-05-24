@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import useStore from "../../store/store";
+import useDigitInput from 'react-digit-input';
 
 import loginLogo from '../../assets/login_logo.svg';
 import loginCloseIcon from '../../assets/login_close.svg';
@@ -20,8 +21,16 @@ const LoginPage = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const [value, onChange] = useState('');
+    const digits = useDigitInput({
+    acceptedCharacters: /^[0-9]$/,
+    length: 6,
+    value,
+    onChange,
+  });
+
     const [email, setEmail] = useState<string>('');
-    const [isEmailSent, setIsEmailSent] = useState<boolean>(false);
+    const [isEmailSent, setIsEmailSent] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
 
     const [code, setCode] = useState<string>('');
@@ -175,7 +184,26 @@ please start here
 
 {
     isEmailSent === true && (
-            <form method="GET"
+        <>
+          <img className="login_logo" width={78} height={38} src={loginLogo} alt="" />
+        <img className="fixed top-[74px] right-1" src={loginCloseIcon} alt="" />
+
+  <h1 className="uppercase text-[#F3F4F4] text-[38px] druk_cyr_heavy_font pt-5">enter security code</h1>
+
+<p className="text-[18px] text-[#D2D4D3] tracking-[6%] leading-[20px] sp_pro_text_medium_font pt-3">An email with a code has been sent to: youremail@example.com
+</p>
+
+ <div className="input-group flex digital_number">
+        <input className="flex flex-row justify-center items-center" inputMode="decimal" autoFocus {...digits[0]} />
+        <input inputMode="decimal" {...digits[1]} />
+        <input inputMode="decimal" {...digits[2]} />
+        {/* <span className="hyphen" /> */}
+        <input inputMode="decimal" {...digits[3]} />
+        {/* <input inputMode="decimal" {...digits[4]} /> */}
+      
+      </div>
+
+  {/* <form method="GET"
             onSubmit={codeHandler}
             className="w-100 h-100 flex flex-col gap-3 justify-center items-center">
                 <input
@@ -187,7 +215,11 @@ please start here
                         <p className="text-red-600">Error occured!</p>
                     )
                 }
-            </form>
+            </form> */}
+
+
+        </>
+          
 
     )
 }
