@@ -499,4 +499,6 @@ object-fit: cover;
 
 .login h1 {
     font-weight: 800;
+    line-height: 100%;
+    letter-spacing: 1%;
 }
