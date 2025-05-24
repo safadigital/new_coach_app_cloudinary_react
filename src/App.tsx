@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import LessonPage from './pages/LessonPage/LessonPage';
 import VideoPlayer from './components/video_player/VideoPlayer';
+import LoginLoader from './components/loader/LoginLoader';
 //import useStore from './store/store';
 
 
@@ -27,6 +28,7 @@ const App: React.FC = () => {
           <Route path="/lesson" element={<LessonPage />} />
           <Route path="/player" element={<VideoPlayer />} />
           <Route path="/" element={<HomePage />} />
+          <Route path="/loader" element={<LoginLoader />} />
            {/* <ProtectedRoute isAuth={isAuth} path='/' element={<HomePage />} />
             <ProtectedRoute isAuth={isAuth} path="/profile" element={<ProfilePage />} /> */}
         </Routes>

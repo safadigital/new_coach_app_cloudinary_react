@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import useStore from "../../store/store";
 import useDigitInput from 'react-digit-input';
 
@@ -31,7 +31,7 @@ const LoginPage = () => {
 
     const [email, setEmail] = useState<string>('');
     const [isEmailSent, setIsEmailSent] = useState<boolean>(false);
-    const [error, setError] = useState<string>('');
+    const [error] = useState<string>('');
 
    // const [code, setCode] = useState<string>('');
 
