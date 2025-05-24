@@ -30,7 +30,7 @@ const LoginPage = () => {
   });
 
     const [email, setEmail] = useState<string>('');
-    const [isEmailSent, setIsEmailSent] = useState<boolean>(true);
+    const [isEmailSent, setIsEmailSent] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
 
    // const [code, setCode] = useState<string>('');
@@ -45,25 +45,30 @@ const LoginPage = () => {
     const emailHandler = (e: any) => {
         e.preventDefault();
         setIsLoading(true);
-        axios.post(import.meta.env.VITE_API_VERIFY_EMAIL_URL,
-            {
-                "email": email
-            }
-            ,
-            {
-            headers: {
-                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
-                 'Content-Type': 'application/json',
-            }
-        }).then((response: any) => {
-            console.log('DATA FROM SERVER FROM EMAIL:', response.data);
-            setIsEmailSent(true);
-            setIsLoading(false);
-        }).catch(error => {
-    console.error('Error for email sending handler: ', error);
-    setError(error);
-      setIsLoading(false);
-});
+
+//         axios.post(import.meta.env.VITE_API_VERIFY_EMAIL_URL,
+//             {
+//                 "email": email
+//             }
+//             ,
+//             {
+//             headers: {
+//                  'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+//                  'Content-Type': 'application/json',
+//             }
+//         }).then((response: any) => {
+//             console.log('DATA FROM SERVER FROM EMAIL:', response.data);
+//             setIsEmailSent(true);
+//             setIsLoading(false);
+//         }).catch(error => {
+//     console.error('Error for email sending handler: ', error);
+//     setError(error);
+//       setIsLoading(false);
+// });
+
+setIsEmailSent(true);
+setIsLoading(false);
+
 
     }
 
@@ -192,7 +197,7 @@ please start here
 
   <h1 className="uppercase text-[#F3F4F4] text-[38px] druk_cyr_heavy_font pt-5">enter security code</h1>
 
-<p className="text-[18px] text-[#D2D4D3] tracking-[6%] leading-[20px] sp_pro_text_medium_font pt-3">An email with a code has been sent to: youremail@example.com
+<p className="text-[18px] text-[#D2D4D3] tracking-[6%] leading-[20px] sp_pro_text_medium_font pt-3">An email with a code has been sent to: {email}
 </p>
 
  <div className="input-group flex digital_number">
