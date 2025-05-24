@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import useStore from "../../store/store";
 
@@ -107,7 +107,7 @@ const codeHandler = (e: any) => {
 
      <form  method="POST"
             onSubmit={emailHandler}
-            className="w-[300px] mt-5">  
+            className="w-[300px] pt-7">  
    <label htmlFor="search" className=" text-sm font-medium text-gray-900 dark:text-white pt-20 sr-only">Enter your email</label>
     <div className="relative">
  <p className="absolute start-2.5 top-[10px] text-[#B4B7B5] text-[10px] sp_pro_text_medium_font tracking-[10%] uppercase leading-[12px]">Enter your email</p>
@@ -129,7 +129,31 @@ const codeHandler = (e: any) => {
         {/* <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
 
     </div>
+
+{
+    email.length > 6 ? <button className=" visible bg-[#FF6D03] text-[#FFFFFF] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm sf_pro_display_medium_font tracking-[6%] leading-[20px]">Continue</button> : <button className=" visible bg-[#2B3330] text-[#565C59] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm sf_pro_display_medium_font tracking-[6%] leading-[20px]">Continue</button>
+}
+   
     </form>
+
+
+ <p className="text-[14px] text-[#D2D4D3] tracking-[6%] leading-[20px] sp_pro_text_medium_font uppercase pt-3">Need Help Logging In? <br />
+please contact &nbsp; 
+<Link className="support" to="/support" target="_blank" >
+support
+</Link>
+
+</p>
+
+<p className="text-[14px] text-[#D2D4D3] tracking-[6%] leading-[20px] sp_pro_text_medium_font uppercase pt-3">If you don't have an account, <br />
+<Link className="support" to="/start" target="_blank" >
+please start here
+</Link>
+</p>
+
+
+
+   
 
             {/* <form method="POST"
             onSubmit={emailHandler}

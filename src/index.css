@@ -206,6 +206,11 @@ progress {
     src: url('./assets/fonts/DrukCyr-Heavy.ttf') format('truetype'); 
 }  
 
+@font-face {
+    font-family: 'SF Pro Display Medium';
+    src: url('./assets/fonts/SFPRODISPLAYMEDIUM.OTF') format('truetype'); 
+}  
+
 
 /* fonts */
 .new_york_font {
@@ -230,6 +235,10 @@ progress {
 
 .sp_pro_text_medium_font {
     font-family: 'SP Pro Text Medium';
+}
+
+.sf_pro_display_medium_font {
+    font-family: 'Druk Cyr Heavy';
 }
 
 .druk_cyr_heavy_font {
@@ -501,4 +510,8 @@ object-fit: cover;
     font-weight: 800;
     line-height: 100%;
     letter-spacing: 1%;
+}
+
+.support {
+    border-bottom: 1px solid #D2D4D3;
 }
