@@ -145,7 +145,7 @@ if (digits[3].value != '') {
         <img className="login_logo" width={78} height={38} src={loginLogo} alt="" />
         <img className="fixed top-[74px] right-1" src={loginCloseIcon} alt="" />
 
-     <h1 className="uppercase text-[#F3F4F4] text-[38px] druk_cyr_heavy_font pt-5">enter the email that is <br /> linked to your account</h1>
+     <h1 className="uppercase text-[#F3F4F4] text-[38px] druk_cyr_heavy_font font-extrabold leading-[100px] tracking-[1%] pt-5">enter the email that is <br /> linked to your account</h1>
 
      <form  method="POST"
             onSubmit={emailHandler}
@@ -161,7 +161,7 @@ if (digits[3].value != '') {
 
         <input
         onChange={(e: any) => setEmail(e.target.value) }
-        type="email" id="email" className="block w-full text-sm pt-5 mb-2 pb-5 pl-2 new_york_font text-[16px] text-[#141D19] border bg-white" placeholder=""value={email} required />
+        type="email" id="email" className="block w-full text-sm pt-5 mb-2 pb-5 pl-2 new_york_font text-[16px] text-[#141D19] border bg-white rounded-sm" placeholder=""value={email} required />
         
 {
     email.length > 0 ? <img className="absolute end-2.5 bottom-2.5 px-0 py-3 cursor-pointer" src={eraseEmailIcon} onClick={() => setEmail('')} alt="" /> : <img className="absolute end-2.5 bottom-2.5 px-0 py-3" src={emailIcon} alt="" />
@@ -173,7 +173,7 @@ if (digits[3].value != '') {
     </div>
 
 {
-    email.length > 6 ? <button className=" visible bg-[#FF6D03] text-[#FFFFFF] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm sf_pro_display_medium_font tracking-[6%] leading-[20px]">Continue</button> : <button className=" visible bg-[#2B3330] text-[#565C59] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm sf_pro_display_medium_font tracking-[6%] leading-[20px]">Continue</button>
+    email.length > 6 ? <button className=" visible bg-[#FF6D03] text-[#FFFFFF] text-[14px] font-semibold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm sf_pro_display_medium_font tracking-[6%] leading-[20px]">Continue</button> : <button className=" visible bg-[#2B3330] text-[#565C59] text-[14px] the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm sf_pro_display_medium_font font-semibold tracking-[6%] leading-[20px]">Continue</button>
 }
    
     </form>
