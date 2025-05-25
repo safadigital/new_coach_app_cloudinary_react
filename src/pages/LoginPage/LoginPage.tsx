@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 import useStore from "../../store/store";
 import useDigitInput from 'react-digit-input';
 
@@ -8,6 +8,7 @@ import loginLogo from '../../assets/login_logo.svg';
 import loginCloseIcon from '../../assets/login_close.svg';
 import emailIcon from '../../assets/email.svg';
 import eraseEmailIcon from '../../assets/erase_email.svg';
+import LoginLoader from "../../components/loader/LoginLoader";
 
 // interface Props {
 //     setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,23 +18,23 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const { isAuth } = useStore();
+    const { isAuth, setIsAuth } = useStore();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [value, onChange] = useState('');
     const digits = useDigitInput({
     acceptedCharacters: /^[0-9]$/,
-    length: 6,
+    length: 4,
     value,
     onChange,
   });
 
     const [email, setEmail] = useState<string>('');
     const [isEmailSent, setIsEmailSent] = useState<boolean>(false);
-    const [error] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
-   // const [code, setCode] = useState<string>('');
+    const [code, setCode] = useState<string>('');
 
     useEffect(() => {
         if (isAuth === true) {
@@ -42,32 +43,34 @@ const LoginPage = () => {
     }, [isAuth])
 
 
+    console.log("Value from code: ", code);
+
     const emailHandler = (e: any) => {
         e.preventDefault();
         setIsLoading(true);
 
-//         axios.post(import.meta.env.VITE_API_VERIFY_EMAIL_URL,
-//             {
-//                 "email": email
-//             }
-//             ,
-//             {
-//             headers: {
-//                  'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
-//                  'Content-Type': 'application/json',
-//             }
-//         }).then((response: any) => {
-//             console.log('DATA FROM SERVER FROM EMAIL:', response.data);
-//             setIsEmailSent(true);
-//             setIsLoading(false);
-//         }).catch(error => {
-//     console.error('Error for email sending handler: ', error);
-//     setError(error);
-//       setIsLoading(false);
-// });
+        axios.post(import.meta.env.VITE_API_VERIFY_EMAIL_URL,
+            {
+                "email": email
+            }
+            ,
+            {
+            headers: {
+                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+                 'Content-Type': 'application/json',
+            }
+        }).then((response: any) => {
+            console.log('DATA FROM SERVER FROM EMAIL:', response.data);
+            setIsEmailSent(true);
+            setIsLoading(false);
+        }).catch(error => {
+    console.error('Error for email sending handler: ', error);
+    setError(error);
+      setIsLoading(false);
+});
 
-setIsEmailSent(true);
-setIsLoading(false);
+// setIsEmailSent(true);
+// setIsLoading(false);
 
 
     }
@@ -75,35 +78,60 @@ setIsLoading(false);
     // console.log(code);
     console.log(error);
 
-// const codeHandler = (e: any) => {
-//         e.preventDefault();
-//         setIsLoading(true);
-//         const base_token_url = import.meta.env.VITE_API_VERIFY_TOKEN_CODE_BASE_URL;
-//         axios.get(base_token_url + `?code=${value}&email=${email}`, {
-//              headers: {
-//                  'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
+   //   console.log("Code from input: ", value);
+
+const codeHandler = () => {
+       // e.preventDefault();
+ // console.log("Code digits from input from codehandler: ", digits);
+//   get digits to string
+// console.log("FIrst digit value: ", digits[0].value);
+// console.log("Second digit value: ", digits[1].value);
+
+const full_code = String(digits[0].value) + String(digits[1].value) + String(digits[2].value) + String(digits[3].value);
+
+console.log("THE FULL INPUTTED CODE : ", full_code);
+
+        setIsLoading(true);
+        const base_token_url = import.meta.env.VITE_API_VERIFY_TOKEN_CODE_BASE_URL;
+        axios.get(base_token_url + `?code=${full_code}&email=${email}`, {
+             headers: {
+                 'Authorization': `Token ${import.meta.env.VITE_API_TOKEN}`,
                 
-//             }
-//         }).then((response: any) => {
-//               console.log('RESPONSE FROM SERVER FROM CODE:', response);
-//               setEmail('');
-//               setCode('');
-//               localStorage.setItem("uid", response.data.uid);
-//               setIsAuth(true);
+            }
+        }).then((response: any) => {
+              console.log('RESPONSE FROM SERVER FROM CODE:', response);
+              setEmail('');
+              setCode('');
+              localStorage.setItem("uid", response.data.uid);
+              setIsAuth(true);
             
-//               navigate('/');
-//         }).catch(error => {
-//     console.error('Error for code sending handler: ', error);
-//     setError(error);
-//      setIsLoading(false);
-// }); 
-// }
+              navigate('/');
+        }).catch(error => {
+    console.error('Error for code sending handler: ', error);
+    setError(error);
+     setIsLoading(false);
+}); 
+}
+
+
+
+
+useEffect(() => {
+if (value.split('').length == 4) {
+        setCode(value);
+        console.log('digits is ', digits)
+        codeHandler()
+      //  codeHandler();
+    } else {
+        
+    }
+    
+
+}, [value])
 
     if (isLoading === true) {
         return (
-            <div className="main_container">
-          <h1>Loading</h1>
-          </div>
+           <LoginLoader />
         )
     }
 
@@ -201,12 +229,13 @@ please start here
 </p>
 
  <div className="input-group flex digital_number">
-        <input tabIndex={1} className={value.split('')[0] ? 'green_border' : ''} inputMode="decimal" autoFocus {...digits[0]} />
-        <input tabIndex={2} className={value.split('')[1] ? 'green_border' : ''}  inputMode="decimal" {...digits[1]} />
-        <input tabIndex={3} className={value.split('')[2] ? 'green_border' : ''}   inputMode="decimal" {...digits[2]} />
+        <input className={value.split('')[0] ? 'green_border' : ''} inputMode="decimal" autoFocus {...digits[0]} />
+        <input className={value.split('')[1] ? 'green_border' : ''}  inputMode="decimal" {...digits[1]} />
+        <input className={value.split('')[2] ? 'green_border' : ''}   inputMode="decimal" {...digits[2]} />
         {/* <span className="hyphen" /> */}
-        <input tabIndex={4} 
-        // onChange={codeHandler}
+        <input 
+        //  onChange={(e) => codeHandler(e)}
+      //  onChange={() => console.log(value) }
         className={value.split('')[3] ? 'green_border' : ''} 
         inputMode="decimal" {...digits[3]} />
       </div>
