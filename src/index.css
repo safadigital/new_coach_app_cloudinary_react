@@ -116,20 +116,44 @@ padding-right: 36%;
 
 /* progress bar global styles */
 
+progress {
+    border-radius: 5px;
+}
+
+/* Style the value of the progress bar */
+progress::-webkit-progress-value {
+    background-color: #FF6D03; /* Color of the filled part */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Style the track of the progress bar */
+progress::-webkit-progress-bar {
+    background-color: #D2D4D3; /* Color of the unfilled part */
+    border-radius: 5px; /* Rounded corners */
+}
+
 progress[value] {
 
   /* background-color: #2B3330; */
 
     /* background-color: #D2D4D3; */
   --color: #FF6D03;
+  border-radius: 4px;
   /* border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; */
 }
 
 /* Chrome */
 progress[value]::-webkit-progress-value {
-    background-color: #D2D4D3;
+    /* background-color: #D2D4D3; */
     background:#FF6D03;
+ 
+}
+
+progress {
+    /* background-color: #D2D4D3; */
+    background:#FF6D03;
+      border-radius: 4px;
 }
 
 /* Firefox */
@@ -140,13 +164,13 @@ progress[value]::-moz-progress-bar {
 }
 
 .smallProgress progress[value]::-webkit-progress-value {
-  background-color: #D2D4D3;
-  --color: #FF6D03;
+  /* background-color: #D2D4D3; */
+  /* --color: #FF6D03; */
   /* 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; */
 }
 
-.smallProgress progress[value]::-webkit-progress-value {
+.smallProgress progress[value] {
     border-radius: 5px !important;
 
      /* border-collapse: separate; 
