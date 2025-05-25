@@ -100,7 +100,7 @@ navigate('/');
     </div></div>
             }
             if (item.content_type == 'normal_text') {
-                return <p key={idx} className="new_york_medium_font text-[16px] pb-5">{item.text}</p>
+                return <p key={idx} className="new_york_medium_font text-[16px] font-normal leading-[20px] pb-5">{item.text}</p>
             }
             if (item.content_type == 'important_text') {
                 return <div key={idx} className="visible flex bg-[#CBDCB533] left_green_border pt-2 pb-5 mb-5">
