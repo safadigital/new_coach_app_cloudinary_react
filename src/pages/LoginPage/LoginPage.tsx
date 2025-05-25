@@ -18,7 +18,7 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const { isAuth, setIsAuth } = useStore();
+  //  const { isAuth, setIsAuth } = useStore();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -36,11 +36,11 @@ const LoginPage = () => {
 
     const [code, setCode] = useState<string>('');
 
-    useEffect(() => {
-        if (isAuth === true) {
-            navigate('/');
-        }
-    }, [isAuth])
+    // useEffect(() => {
+    //     if (isAuth === true) {
+    //         navigate('/');
+    //     }
+    // }, [isAuth])
 
 
     console.log("Value from code: ", code);
