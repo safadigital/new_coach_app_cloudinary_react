@@ -74,7 +74,7 @@ navigate('/');
 
     return (
         <>
-        <div className="visible broad_desktop flex-column ml-2 mr-2 overflow-y-auto pt-20 low">
+        <div className="visible broad_desktop flex-column pr-5 pl-5 overflow-y-auto pt-20 low">
 
       
       {
@@ -125,7 +125,7 @@ navigate('/');
         </div>
 
 {
-    currentPage < lessonData.pages ?  <div className="bg-[#fff] fixed bottom-0 pt-2 mt-2 pb-5 broad_desktop the_content_button"> <button
+    currentPage < lessonData.pages ?  <div className="bg-[#fff] fixed bottom-0 pt-2 mt-2 pb-5 broad_desktop the_content_button pr-5 pl-5"> <button
         onClick={() => {
             setCurrentPage(currentPage + 1); 
             window.scrollTo(0, 0); 
@@ -134,7 +134,7 @@ navigate('/');
 }
 
 {
-    currentPage == lessonData.pages ?  <div className="bg-[#fff] fixed bottom-0 pt-2 mt-2 pb-5 broad_desktop the_content_button"> <button
+    currentPage == lessonData.pages ?  <div className="bg-[#fff] fixed bottom-0 pt-2 mt-2 pb-5 broad_desktop the_content_button pr-5 pl-5"> <button
         onClick={handleFinishLesson}
        className=" visible bg-[#141D19] text-[#fff] text-[14px] sp_pro_text_medium_font font-bold the_content_button pt-[18px] pb-[18px] uppercase cursor-pointer rounded-sm">Finish</button></div> : <div></div>
 }

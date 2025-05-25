@@ -20,7 +20,7 @@ const LessonHeader: React.FC<LessonHeaderProps> = ({ lesson_data }) => {
 
     return (
         <>
-           <header className='broad_desktop fixed w-full bg-[#fff] h-20'>
+           <header className='broad_desktop fixed w-full bg-[#fff] h-20 pr-5 pl-5'>
 
     <div className="visible flex justify-center w-full">
 <p className="new_york_medium_font text-[16px] text-[#2B3330] font-semibold">{lessonData.plate_name}</p>
