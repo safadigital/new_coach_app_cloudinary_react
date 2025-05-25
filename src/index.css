@@ -45,7 +45,7 @@ flex-direction: column;
 
 @media(min-width: 900px) {
     .main_container {
-    /* max-width: 800px; */
+   max-width: 500px;
      margin-left: 30%;
     margin-right: 30%;
 }
