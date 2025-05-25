@@ -282,6 +282,8 @@ progress {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-auto-rows: 1fr;
+    /* width: 343px; */
+    height: 103px;
     /* max-height: 104px; */
     /* grid-column-gap: auto; */
 

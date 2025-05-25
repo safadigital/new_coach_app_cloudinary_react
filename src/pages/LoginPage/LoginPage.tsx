@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import useStore from "../../store/store";
+// import useStore from "../../store/store";
 import useDigitInput from 'react-digit-input';
 
 import loginLogo from '../../assets/login_logo.svg';
