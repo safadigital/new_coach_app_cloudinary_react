@@ -95,7 +95,7 @@ navigate('/');
 </Link>
 
     <div className="w-full bg-[#F1ECE9] pb-2 rounded_video_info">
-        <p className="pl-2 pt-2 text-[16px] font-bold sp_pro_text_medium_font">{item.video_name}</p>
+        <p className="pl-2 pt-2 text-[16px] new_york_medium_font font-semibold">{item.video_name}</p>
         <p className="pl-2 pt-2 text-[#696E6C] text-[14px] font-bold sp_pro_text_medium_font tracking-[6%] uppercase">{item.author}</p>
     </div></div>
             }
