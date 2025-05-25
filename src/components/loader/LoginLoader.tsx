@@ -9,7 +9,6 @@ const LoginLoader = () => {
              <img className="fixed top-[74px] right-1" src={loginCloseIcon} alt="" />
    <div className="login_loader"></div>
         </div>
-     
         </>
     )
 

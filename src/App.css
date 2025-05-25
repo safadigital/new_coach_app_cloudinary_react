@@ -57,6 +57,36 @@ padding-right: 36%;
     margin-right: 35%;
 }
 
+}
+@media(min-width: 501) {
+.broad_desktop {
+padding-left: 6%;
+padding-right: 6%;
+}
+
+.desktop-navigation {
+    width: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+
+}
+
+
+
+@media(min-width: 701) {
+.broad_desktop {
+padding-left: 16%;
+padding-right: 16%;
+}
+
+.desktop-navigation {
+    width: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
 
 }
 
