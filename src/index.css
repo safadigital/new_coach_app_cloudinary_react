@@ -479,6 +479,13 @@ object-fit: cover;
 .responsive-image {
     width: 100%;
     height: auto;
+    border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+}
+
+.rounded_video_info {
+       border-bottom-left-radius: 4px;
+     border-bottom-right-radius: 4px;
 }
 
 /* the content buttons -finish and continue */
@@ -618,3 +625,6 @@ border: 2px solid #208357;
   100% { transform: rotate(360deg); }
 }
 
+.rounded_img {
+    border-radius: 4px !important;
+}

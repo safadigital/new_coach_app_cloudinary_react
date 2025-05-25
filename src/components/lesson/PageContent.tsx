@@ -89,12 +89,12 @@ navigate('/');
                     <svg className="responsive-image" 
  xmlns="http://www.w3.org/2000/svg" 
  xmlnsXlink="http://www.w3.org/1999/xlink">
-    <image xlinkHref={item.preview_url}  className="responsive-image"  />
+    <image xlinkHref={item.preview_url}  className="responsive-image rounded_img"  />
     <image className="cursor-pointer" xlinkHref={playIcon} x="40%" y="40%" height="50" width="50" />    
 </svg>
 </Link>
 
-    <div className="w-full bg-[#F1ECE9] pb-2">
+    <div className="w-full bg-[#F1ECE9] pb-2 rounded_video_info">
         <p className="pl-2 pt-2 text-[16px] font-bold sp_pro_text_medium_font">{item.video_name}</p>
         <p className="pl-2 pt-2 text-[#696E6C] text-[14px] font-bold sp_pro_text_medium_font tracking-[6%] uppercase">{item.author}</p>
     </div></div>
