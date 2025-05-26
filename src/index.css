@@ -154,7 +154,8 @@ progress {
 }
 
 .smallProgress progress[value]::-webkit-progress-value {
-  background-color: #D2D4D3; 
+  background-color: #FF6D03; 
+  --color: #FF6D03;
   /* --color: #FF6D0
   /* 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; */
