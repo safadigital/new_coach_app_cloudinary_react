@@ -1,6 +1,6 @@
 import arrowLeft from '../../assets/arrow_left.svg';
 import profileImg from '../../assets/profile.svg';
-import supplementsImg from '../../assets/icon_supplements.svg';
+// import supplementsImg from '../../assets/icon_supplements.svg';
 import accountImg from '../../assets/icon_account.svg';
 import supportImg from '../../assets/icon_support.svg';
 import faqImg from '../../assets/icon_faq.svg';
@@ -14,8 +14,9 @@ const ProfilePage = () => {
         <>
         <div className='main_container'>
         <div className="visible flex bg-[#F3F4F4] w-full pl-2 pt-5 pb-5">
+            <Link to={'/'} >
         <img className="w-[32px] h-[32px] cursor-pointer" src={arrowLeft} alt="" />
-        
+        </Link>
     </div>
 
     <div className="visible bg-[#F3F4F4] profile w-full pt-5">
@@ -28,7 +29,8 @@ const ProfilePage = () => {
 
 
     {/* <!-- item --> */}
-    <div className="visible bg-[#F3F4F4] mt-2 mb-5 ml-3 mr-3 p-[16px] flex justify-between items-center">
+
+    {/* <div className="visible bg-[#F3F4F4] mt-2 mb-5 ml-3 mr-3 p-[16px] flex justify-between items-center">
         <div className="flex justify-start">
             <img src={supplementsImg} alt="" />
             <span className="new_york_medium_font text-[18px] pl-5">My Supplements</span>
@@ -36,7 +38,8 @@ const ProfilePage = () => {
 <div>
     <img src="images/right_arrow.svg" alt="" />
 </div>
-    </div>
+    </div> */}
+
       {/* <!-- end item --> */}
 
        {/* <!-- item --> */}
