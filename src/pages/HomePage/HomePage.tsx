@@ -271,7 +271,7 @@ return (
 
     <hr className="visible text-gray-200" />
 
-    <div className="visible flex items-center justify-between pt-3">
+    <div className={`visible flex items-center  pt-3 ${currentDay <= 1 ? 'justify-end' +  ' gap-[40%]': ''} ${currentDay >= totalDays ? 'justify-start' +  ' gap-[40%]': ''} ${ currentDay > 1 && currentDay < totalDays ? 'justify-between' : ''} `}>
      
 <img
 onClick={() => {
@@ -279,7 +279,7 @@ onClick={() => {
         setCurrentDay(currentDay - 1);
     }
 }}
-className="cursor-pointer" src={leftArrov} alt="" />
+className={`cursor-pointer ${ currentDay <= 1 ? 'hidden' : ''  }`} src={leftArrov} alt="" />
 
 <p className="text-[#696E6C] text-xs font-bold new_york_medium_font">Day {currentDay} of {totalDays}</p>
 
@@ -289,7 +289,7 @@ if ( currentDay < totalDays) {
 setCurrentDay(currentDay + 1);
 }
 } }
-className="cursor-pointer" src={rightArrov} alt="" />
+className={`cursor-pointer ${ currentDay >= totalDays ? 'hidden' : ''  }`} src={rightArrov} alt="" />
     </div>
     </div>
 
